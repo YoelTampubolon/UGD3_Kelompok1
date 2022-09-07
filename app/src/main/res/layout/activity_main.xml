@@ -34,7 +34,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:text="Email"
-            android:textColor="@color/black"
+            android:textColor="#585858"
             android:textSize="18dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +62,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:text="Password"
-            android:textColor="@color/black"
+            android:textColor="#585858"
             android:textSize="18dp" />
 
         <com.google.android.material.textfield.TextInputLayout
