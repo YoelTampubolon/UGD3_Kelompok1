@@ -18,14 +18,17 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SELAMAT DATANG!"
-        android:textSize="36dp"
-        android:textColor="@color/white"
-        android:fontFeatureSettings="@f"
         style="@style/TextAppearance.MaterialComponents.Headline5"
-        tools:layout_editor_absoluteX="51dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/fontstyle"
+        android:text="SELAMAT DATANG!"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="528dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
