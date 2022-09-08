@@ -12,18 +12,15 @@
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginRight="250dp"
-        android:layout_marginBottom="550dp"
-        android:fontFamily="@font/poppins"
         android:text="Hi, Vikram!"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
+        android:layout_marginRight="250dp"
+        android:layout_marginBottom="550dp"/>
+
 
     <LinearLayout
         android:id="@+id/navbar_bottom"
@@ -48,20 +45,18 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toEndOf="@+id/namaView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_move" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInput"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="250dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:hint="Mari Berdonasi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/namaView">
@@ -69,23 +64,21 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_search"
         android:layout_width="100dp"
-        android:layout_height="45dp"
-
-        android:layout_marginTop="23dp"
-        android:fontFamily="@font/poppinsbold"
+        android:layout_height="60dp"
         android:text="Cari"
-        app:backgroundTint="#FEB139"
+
+        android:layout_marginTop="135dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toEndOf="@+id/textInput"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:backgroundTint="#FEB139"
+        android:fontFamily="@font/poppins"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -121,10 +114,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
                     android:text="Bangun Rumah Belajar Untuk Mereka"
+                    android:textSize="16dp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textSize="16dp" />
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
