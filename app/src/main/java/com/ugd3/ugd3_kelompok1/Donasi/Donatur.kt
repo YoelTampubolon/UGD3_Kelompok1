@@ -1,4 +1,4 @@
-package com.ugd3.ugd3_kelompok1
+package com.ugd3.ugd3_kelompok1.Donasi
 
 class Donatur (var name: String,var nominal: Double, var alamat: String){
 //    Kelas buat nampilin recycler view
