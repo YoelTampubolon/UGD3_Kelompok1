@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="200dp"
+        android:layout_marginRight="185dp"
         android:layout_marginBottom="550dp"/>
 
 
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_move" />
@@ -73,7 +73,7 @@
         android:layout_height="60dp"
         android:text="Cari"
 
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInput"
         app:layout_constraintTop_toTopOf="parent"
@@ -119,12 +119,12 @@
                     android:textSize="16dp" />
 
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/foundation"
-                    android:layout_gravity="start"/>
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView3"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:srcCompat="@drawable/foundation"-->
+<!--                    android:layout_gravity="start">-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,7 +161,7 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="78dp"
         android:layout_marginStart="18dp"
         app:layout_constraintEnd_toStartOf="@+id/namaView"
         app:layout_constraintStart_toStartOf="parent"
