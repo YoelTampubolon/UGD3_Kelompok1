@@ -124,7 +124,7 @@
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/foundation"
-                    android:layout_gravity="start">
+                    android:layout_gravity="start"/>
 
                 <TextView
                     android:layout_width="wrap_content"
