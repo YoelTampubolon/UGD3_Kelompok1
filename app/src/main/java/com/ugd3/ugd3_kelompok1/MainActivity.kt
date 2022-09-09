@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         val btnMasuk: Button = findViewById(R.id.btnMasuk)
         val btnDaftar: Button = findViewById(R.id.btnDaftar)
 
+        btnDaftar.setOnClickListener {
+            val moveDaftar = Intent(this@MainActivity, RegisterActivity::class.java)
+            startActivity(moveDaftar)
+        }
 
         btnMasuk.setOnClickListener(View.OnClickListener {
             var checkLogin = false
