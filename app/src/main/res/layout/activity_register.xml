@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/namaLengkap"
                 android:layout_width="384dp"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Nama Lengkap"
@@ -52,7 +52,7 @@
                 android:id="@+id/inputLayoutNama"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="eg.Vikram Varma"
                 app:errorEnabled="true">
@@ -67,8 +67,7 @@
             <TextView
                 android:id="@+id/email"
                 android:layout_width="384dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Email"
@@ -78,7 +77,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutEmail"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="example@gmail.com"
                 app:errorEnabled="true"
@@ -94,8 +93,7 @@
             <TextView
                 android:id="@+id/password"
                 android:layout_width="384dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Password"
@@ -105,7 +103,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutPassword"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Password"
                 app:errorEnabled="true"
@@ -122,8 +120,7 @@
             <TextView
                 android:id="@+id/tanggalLahir"
                 android:layout_width="384dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Tanggal Lahir"
@@ -133,7 +130,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutTanggalLahir"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="dd/mm/yyyy"
                 app:errorEnabled="true"
@@ -150,8 +147,7 @@
             <TextView
                 android:id="@+id/nomorTelepon"
                 android:layout_width="384dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Nomor Telepon"
@@ -161,7 +157,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputLayoutNomorTelepon"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Nomor Telepon"
                 app:errorEnabled="true"

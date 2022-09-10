@@ -47,16 +47,45 @@ class RegisterActivity : AppCompatActivity() {
             val mBundle = Bundle()
             var error = true
 
+            val NamaLengkap: String = registerNamaLengkap.editText?.text.toString()
+            val password: String = registerPassword.editText?.text.toString()
+            val email: String = registerEmail.editText?.text.toString()
+            val tanggalLahir: String = registerTanggallahir.editText?.text.toString()
+            val NoTelpon: String = registerNomorTelepon.editText?.text.toString()
+
             mBundle.putString("username", registerNamaLengkap.editText?.text.toString())
             mBundle.putString("email", registerEmail.editText?.text.toString())
             mBundle.putString("password", registerPassword.editText?.text.toString())
             mBundle.putString("Tanggallahir", registerTanggallahir.editText?.text.toString())
             mBundle.putString("NoHandphone", registerNomorTelepon.editText?.text.toString())
 
-            Snackbar.make(registerLayout, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
+            if(NamaLengkap.isEmpty()){
+                registerNamaLengkap.setError("Nama Wajib Diisi")
+                error = true
+            }
+            if(password.length!=8){
+                registerPassword.setError("Password Wajib 8 Karakter")
+                error = true
+            }
+            if(email.isEmpty()){
+                registerEmail.setError("Email Wajib Diisi")
+                error = true
+            }
+            if(tanggalLahir.isEmpty()){
+                registerTanggallahir.setError("Tanggal Lahir Wajib Diisi")
+                error = true
+            }
+            if(NoTelpon.isEmpty()){
+                registerNomorTelepon.setError("No Telp Wajib Diisi")
+                error = true
+            }
+            if(NamaLengkap.isNotEmpty() && password.length==8 && email.isNotEmpty() && tanggalLahir.isNotEmpty() && NoTelpon.isNotEmpty()) {
+                error = false
+                Snackbar.make(registerLayout, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
 
 
-            if(!error)return@OnClickListener
+            }
+            if(error)return@OnClickListener
             val intent = Intent(this@RegisterActivity, MainActivity::class.java)
             intent.putExtra("register", mBundle)
             startActivity(intent)
