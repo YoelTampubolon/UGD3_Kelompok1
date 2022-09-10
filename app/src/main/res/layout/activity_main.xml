@@ -39,7 +39,7 @@
             android:textSize="18dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutEmail"
+            android:id="@+id/inputLayoutEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -67,7 +67,7 @@
             android:textSize="18dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutPassword"
+            android:id="@+id/inputLayoutPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

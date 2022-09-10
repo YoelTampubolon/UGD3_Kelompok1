@@ -13,17 +13,29 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputEmail : TextInputLayout
     private lateinit var inputPassword : TextInputLayout
     private lateinit var loginLayout : ConstraintLayout
+    var mBundle : Bundle? = null
+    var tempEmail : String = "admin"
+    var tempPass : String = "admin"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        inputEmail = findViewById(R.id.inputLayoutEmail)
-        inputPassword = findViewById(R.id.inputLayoutPassword)
+        inputEmail = findViewById(R.id.inputLayoutEmailLogin)
+        inputPassword = findViewById(R.id.inputLayoutPasswordLogin)
         loginLayout = findViewById(R.id.loginLayout)
         val btnMasuk: Button = findViewById(R.id.btnMasuk)
         val btnDaftar: Button = findViewById(R.id.btnDaftar)
+
+        if(intent.getBundleExtra("register")!=null){
+            mBundle = intent.getBundleExtra("register")
+            tempEmail = mBundle!!.getString("email")!!
+            tempPass = mBundle!!.getString("password")!!
+            println(tempEmail)
+            inputEmail.editText?.setText(tempEmail)
+            inputPassword.editText?.setText(tempPass)
+        }
 
         btnDaftar.setOnClickListener {
             val moveDaftar = Intent(this@MainActivity, RegisterActivity::class.java)
@@ -54,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 checkLogin = false
             }
 
-            if(email == "admin" && password == "admin") checkLogin = true
+            if((email == "admin" && password == "admin") || (email==tempEmail && password==tempPass) ) checkLogin = true
             
             else {
                 Snackbar.make(loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()

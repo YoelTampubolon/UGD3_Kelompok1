@@ -25,7 +25,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        println("masuk")
         registerNamaLengkap = findViewById(R.id.inputLayoutNama)
         registerEmail = findViewById(R.id.inputLayoutEmail)
         registerPassword = findViewById(R.id.inputLayoutPassword)
@@ -34,17 +33,16 @@ class RegisterActivity : AppCompatActivity() {
         registerLayout = findViewById(R.id.activityRegister)
         val btnDaftar: Button = findViewById(R.id.btnDaftar)
         val btnReset: Button = findViewById(R.id.btnReset)
-        println("masuk2")
 
         btnDaftar.setOnClickListener (View.OnClickListener{
             val mBundle = Bundle()
             var error = true
 
-            mBundle.putString("username", registerNamaLengkap.editText.toString())
-            mBundle.putString("email", registerEmail.editText.toString())
-            mBundle.putString("password", registerPassword.editText.toString())
-            mBundle.putString("Tanggallahir", registerTanggallahir.editText.toString())
-            mBundle.putString("NoHandphone", registerNomorTelepon.editText.toString())
+            mBundle.putString("username", registerNamaLengkap.editText?.text.toString())
+            mBundle.putString("email", registerEmail.editText?.text.toString())
+            mBundle.putString("password", registerPassword.editText?.text.toString())
+            mBundle.putString("Tanggallahir", registerTanggallahir.editText?.text.toString())
+            mBundle.putString("NoHandphone", registerNomorTelepon.editText?.text.toString())
 
             Snackbar.make(registerLayout, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
 
