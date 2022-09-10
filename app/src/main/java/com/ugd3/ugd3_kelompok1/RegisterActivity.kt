@@ -10,14 +10,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var registerNamaLengkap: TextInputEditText
-    private lateinit var registerEmail: TextInputEditText
-    private lateinit var registerPassword: TextInputEditText
-    private lateinit var registerTanggallahir: TextInputEditText
-    private lateinit var registerNomorTelepon: TextInputEditText
+    private lateinit var registerNamaLengkap: TextInputLayout
+    private lateinit var registerEmail: TextInputLayout
+    private lateinit var registerPassword: TextInputLayout
+    private lateinit var registerTanggallahir: TextInputLayout
+    private lateinit var registerNomorTelepon: TextInputLayout
     private lateinit var registerLayout: ConstraintLayout
 
 
@@ -25,11 +26,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         println("masuk")
-        registerNamaLengkap = findViewById(R.id.namaLengkap)
-        registerEmail = findViewById(R.id.email)
-        registerPassword = findViewById(R.id.password)
-        registerTanggallahir = findViewById(R.id.tanggalLahir)
-        registerNomorTelepon = findViewById(R.id.nomorTelepon)
+        registerNamaLengkap = findViewById(R.id.inputLayoutNama)
+        registerEmail = findViewById(R.id.inputLayoutEmail)
+        registerPassword = findViewById(R.id.inputLayoutPassword)
+        registerTanggallahir = findViewById(R.id.inputLayoutTanggalLahir)
+        registerNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
         registerLayout = findViewById(R.id.activityRegister)
         val btnDaftar: Button = findViewById(R.id.btnDaftar)
         val btnReset: Button = findViewById(R.id.btnReset)
@@ -39,11 +40,11 @@ class RegisterActivity : AppCompatActivity() {
             val mBundle = Bundle()
             var error = true
 
-            mBundle.putString("username", registerNamaLengkap.text.toString())
-            mBundle.putString("email", registerEmail.text.toString())
-            mBundle.putString("password", registerPassword.text.toString())
-            mBundle.putString("Tanggallahir", registerTanggallahir.text.toString())
-            mBundle.putString("NoHandphone", registerNomorTelepon.text.toString())
+            mBundle.putString("username", registerNamaLengkap.editText.toString())
+            mBundle.putString("email", registerEmail.editText.toString())
+            mBundle.putString("password", registerPassword.editText.toString())
+            mBundle.putString("Tanggallahir", registerTanggallahir.editText.toString())
+            mBundle.putString("NoHandphone", registerNomorTelepon.editText.toString())
 
             Snackbar.make(registerLayout, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
 
@@ -55,11 +56,11 @@ class RegisterActivity : AppCompatActivity() {
         })
 
         btnReset.setOnClickListener{
-            registerNamaLengkap.setText("")
-            registerPassword.setText("")
-            registerEmail.setText("")
-            registerTanggallahir.setText("")
-            registerNomorTelepon.setText("")
+            registerNamaLengkap.editText?.setText("")
+            registerPassword.editText?.setText("")
+            registerEmail.editText?.setText("")
+            registerTanggallahir.editText?.setText("")
+            registerNomorTelepon.editText?.setText("")
 
             Snackbar.make(registerLayout, "Sukses Mereset", Snackbar.LENGTH_LONG).show()
         }
@@ -72,11 +73,12 @@ class RegisterActivity : AppCompatActivity() {
 
             setPositiveButton("Yes") { _, _ ->
                 super.onBackPressed()
+                Toast.makeText(this@RegisterActivity, "Terima Kasih",
+                    Toast.LENGTH_LONG).show()
             }
 
             setNegativeButton("No"){_, _ ->
-                Toast.makeText(this@RegisterActivity, "Terima Kasih",
-                    Toast.LENGTH_LONG).show()
+
             }
 
             setCancelable(true)
