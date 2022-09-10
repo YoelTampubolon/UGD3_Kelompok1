@@ -2,31 +2,20 @@ package com.ugd3.ugd3_kelompok1
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Button
 import android.widget.PopupMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.ugd3.ugd3_kelompok1.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var navController: NavController
-    private lateinit var binding:ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        supportActionBar?.hide()
-        bottomNavigationView = binding.navView
-
+        getSupportActionBar()?.hide()
+        var bottomNavigationView: BottomNavigationView = findViewById(R.id.nav_view)
         val homeFragment = FragmentHome()
         val donasiFragment = FragmentDonasi()
         val profileFragment = FragmentProfile()

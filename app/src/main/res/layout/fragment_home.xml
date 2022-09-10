@@ -7,58 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".FragmentHome">
 
-
     <TextView
         android:id="@+id/namaView"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="550dp"
         android:text="Hi, Vikram!"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="185dp"
-        android:layout_marginBottom="550dp"/>
+        app:layout_constraintVertical_bias="0.217" />
 
-
-    <!--<RelativeLayout-->
-    <!--    android:id="@+id/navbar_bottom"-->
-    <!--    android:layout_width="match_parent"-->
-    <!--    android:layout_height="wrap_content"-->
-    <!--    app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--    app:layout_constraintStart_toStartOf="parent"-->
-    <!--    app:layout_constraintTop_toTopOf="parent"-->
-    <!--    app:layout_constraintVertical_bias="1.0">-->
-
-    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-    <!--        android:id="@+id/bottom_navigation"-->
-    <!--        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        app:backgroundTint="#FEB139"-->
-    <!--        app:menu="@menu/home_navigation" />-->
-    <!--</RelativeLayout>-->
-
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toStartOf="@+id/namaView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_move" />
+        app:srcCompat="@drawable/hand" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
         android:hint="Mari Berdonasi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/namaView">
@@ -73,111 +55,27 @@
         android:id="@+id/btn_search"
         android:layout_width="100dp"
         android:layout_height="60dp"
+
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins"
         android:text="Cari"
-
-        android:layout_marginTop="130dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textInput"
-        app:layout_constraintTop_toTopOf="parent"
         app:backgroundTint="#FEB139"
-        android:fontFamily="@font/poppins"/>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInput">
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toEndOf="@+id/textInput" />
 
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="275dp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="370dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="0dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInput"
-                app:srcCompat="@drawable/card1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bangun Rumah Belajar Untuk Mereka"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textSize="16dp" />
-
-
-                <!--                <ImageView-->
-                <!--                    android:id="@+id/imageView3"-->
-                <!--                    android:layout_width="40dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    app:srcCompat="@drawable/foundation"-->
-                <!--                    android:layout_gravity="start">-->
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dian Foundation"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textSize="16dp"
-                    android:layout_gravity="left
-"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="230dp"
-                        app:backgroundTint="#FEB139"
-                        android:text="Donasi"
-                        android:textSize="12dp"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_home"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginStart="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/namaView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hand" />
+        android:layout_height="566dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textInput"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/rv_item_home" />
 
-    <!--<androidx.fragment.app.FragmentContainerView-->
-    <!--    android:id="@+id/layout_fragment"-->
-    <!--    android:layout_width="match_parent"-->
-    <!--    android:layout_height="match_parent"-->
-    <!--    app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--    app:layout_constraintEnd_toEndOf="parent"-->
-    <!--    app:layout_constraintStart_toStartOf="parent"-->
-    <!--    app:layout_constraintTop_toTopOf="parent"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
