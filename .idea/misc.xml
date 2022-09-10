@@ -22,8 +22,9 @@
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_note.xml" value="0.198" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_user_24.xml" value="0.198" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_donasi.xml" value="0.203125" />
-        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donasi.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donatur.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_home.xml" value="0.2" />
