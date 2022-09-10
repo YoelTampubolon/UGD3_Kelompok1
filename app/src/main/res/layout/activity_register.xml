@@ -140,6 +140,7 @@
                 android:layout_marginBottom="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputTextTanggalLahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -170,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:inputType="text" />
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
