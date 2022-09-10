@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="230dp"
                         android:text="Donasi"
-                        android:textSize="12dp"
+                        android:textSize="9dp"
                         app:backgroundTint="#FEB139" />
                 </LinearLayout>
 

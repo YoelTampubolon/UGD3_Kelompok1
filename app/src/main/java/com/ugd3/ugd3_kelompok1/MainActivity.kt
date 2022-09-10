@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
             inputPassword.editText?.setText(tempPass)
         }
 
-        btnDaftar.setOnClickListener {
+        btnDaftar.setOnClickListener(View.OnClickListener  {
             val moveDaftar = Intent(this@MainActivity, RegisterActivity::class.java)
             startActivity(moveDaftar)
-        }
+        })
 
         btnMasuk.setOnClickListener(View.OnClickListener {
             var checkLogin = false
