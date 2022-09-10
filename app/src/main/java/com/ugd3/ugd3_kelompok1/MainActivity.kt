@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity() {
                 checkLogin = false
             }
 
-            if(email == "admin@gmail.com" && password == "admin123") checkLogin = true
+            if(email == "admin" && password == "admin") checkLogin = true
+            
             else {
                 Snackbar.make(loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
             }

@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugd3.ugd3_kelompok1.Donasi.Donatur
 
 
-class FragmentDonatur : Fragment() {
+class FragmentDonasi : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //Inflate the layout for this fragment
-        //Proses menghubungkan layout fragment_mahasiswa.xml dengan fragment ini
-        return inflater.inflate(R.layout.fragment_donatur ,container, false)
+        return inflater.inflate(R.layout.fragment_donasi,container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
