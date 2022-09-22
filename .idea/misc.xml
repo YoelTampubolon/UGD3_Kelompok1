@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/drawable/bgstyle.xml" value="0.1525" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/drawable/borderbutton.xml" value="0.2585" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/drawable/ic_lock_24.xml" value="0.2595" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/drawable/ic_user_24.xml" value="0.2595" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/font/font.xml" value="0.2833333333333333" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/font/fontstyle.xml" value="0.2833333333333333" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/font/poppins.xml" value="0.2833333333333333" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/activity_home.xml" value="0.2028985507246377" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/activity_register.xml" value="0.17255434782608695" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/fragment_donasi.xml" value="0.2028985507246377" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/rv_item_donatur.xml" value="0.2028985507246377" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/rv_item_home.xml" value="0.2028985507246377" />
+        <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/menu/home_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/bgstyle.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/borderbutton.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/home_icon.xml" value="0.1635" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_home.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_lock_24.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_move.xml" value="0.1735" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_note.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/ic_user_24.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_donasi.xml" value="0.203125" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donasi.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donatur.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_donatur.xml" value="0.67" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_item_donatur.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_item_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/menu/donasipage.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/menu/home.xml" value="0.203125" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/menu/home_navigation.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/menu/homepage.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.198" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/activity_edit_profile.xml" value="0.19947916666666668" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/activity_home.xml" value="0.19947916666666668" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/activity_main.xml" value="0.19947916666666668" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/activity_register.xml" value="0.19947916666666668" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/activity_splash_screen.xml" value="0.19947916666666668" />
+        <entry key="..\:/UGD3_Kelompok1-master/app/src/main/res/layout/fragment_home.xml" value="0.19947916666666668" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

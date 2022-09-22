@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.ugd3.ugd3_kelompok1.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentDonasi"
+            app:destination="@id/fragmentDonasi" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentDonasi"
+        android:name="com.ugd3.ugd3_kelompok1.FragmentDonasi"
+        android:label="fragment_donasi"
+        tools:layout="@layout/fragment_donasi" >
+        <action
+            android:id="@+id/action_fragmentDonasi_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.ugd3.ugd3_kelompok1.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
