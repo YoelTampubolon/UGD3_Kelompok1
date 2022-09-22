@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         inputEmail = findViewById(R.id.inputLayoutEmailLogin)
         inputPassword = findViewById(R.id.inputLayoutPasswordLogin)
         loginLayout = findViewById(R.id.loginLayout)

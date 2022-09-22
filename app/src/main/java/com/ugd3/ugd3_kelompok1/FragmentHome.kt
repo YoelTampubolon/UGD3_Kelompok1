@@ -25,7 +25,6 @@ class FragmentHome : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         val adapter: RVHomeAdapter = RVHomeAdapter(Home.listOfHome)
 
-        //Menghubungkan rvMahasiswa dengan recycler view yang ada pada layout
         val rvHome : RecyclerView = view.findViewById(R.id.rv_home)
 
         //Set layout manager dari recycler view

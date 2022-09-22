@@ -26,7 +26,7 @@ class FragmentDonasi : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         val adapter: RVDonaturAdapter = RVDonaturAdapter(Donatur.listOfDonatur)
 
-        //Menghubungkan rvMahasiswa dengan recycler view yang ada pada layout
+        //Menghubungkan rvDonatur dengan recycler view yang ada pada layout
         val rvDonatur : RecyclerView = view.findViewById(R.id.rv_donatur)
 
         //Set layout manager dari recycler view

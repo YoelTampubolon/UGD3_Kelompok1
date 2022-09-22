@@ -11,8 +11,6 @@ class Home(var judulDonasi : String, var gambarDonasi : Int) {
             Home("Bangun Rumah Belajar Untuk Mereka", R.drawable.card1),
             Home("Bangun Rumah Belajar Untuk Mereka", R.drawable.card1),
             Home("Bangun Rumah Belajar Untuk Mereka", R.drawable.card1),
-
-
             )
     }
 }
