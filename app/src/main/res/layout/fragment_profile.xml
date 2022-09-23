@@ -1,44 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentProfile">
+    tools:context=".FragmentProfile"
+    tools:layout_editor_absoluteX="5dp"
+    tools:layout_editor_absoluteY="0dp">
 
+
+    <ImageView
+        android:id="@+id/icon_user_24"
+        android:layout_width="160dp"
+        android:layout_height="151dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="50dp"
+        android:padding="25dp"
+        android:src="@drawable/ic_user_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="398dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="Profile"
         android:textColor="@color/black"
         android:textSize="30dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="170dp" />
 
 
+    <TextView
+        android:id="@+id/editProfil"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Edit Profil"
+        android:textColor="#585858"
+        android:textSize="18dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="208dp" />
+
+    <ImageView
+        android:id="@+id/icon_edit_24"
+        android:layout_width="70dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="184dp"
+        android:padding="25dp"
+        android:src="@drawable/ic_edit_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/grey" />
+
+
+    <TextView
+        android:id="@+id/phonenumber"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="0812******56"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="450dp" />
+
+    <TextView
+        android:id="@+id/nama"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Vikram Varma"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Email"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="355dp" />
+
+    <TextView
+        android:id="@+id/inputemail"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Vikram16@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="377dp" />
+
+    <TextView
+        android:id="@+id/Inputphonenumber"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="No HP"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="429dp" />
+
+    <TextView
+        android:id="@+id/Alamat"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Tanggal Lahir"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="513dp" />
+
+    <TextView
+        android:id="@+id/InputtglLahir"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="17 Agustus 1945"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="537dp" />
+
+    <TextView
+        android:id="@+id/TglLahir"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Alamat"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="598dp" />
+
+    <TextView
+        android:id="@+id/Inputalamat"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Jl. Kebangsaan No. a5"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="622dp" />
+
+    <TextView
+        android:id="@+id/namaLengkap"
+        android:layout_width="324dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins"
+        android:text="Nama Lengkap"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="280dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"
         style="?attr/materialButtonOutlinedStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textProfile"
-        app:layout_constraintVertical_bias="0.094"
-        app:strokeColor="#FEB139"
         android:layout_width="354dp"
         android:layout_height="55dp"
         android:layout_weight="1"
         android:fontFamily="@font/poppinsbold"
         android:text="Log out"
         android:textColor="#FEB139"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="109dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textProfile"
+        app:layout_constraintVertical_bias="0.875"
+        app:strokeColor="#FEB139" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

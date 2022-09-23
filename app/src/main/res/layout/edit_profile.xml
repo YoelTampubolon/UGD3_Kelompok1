@@ -6,26 +6,21 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activityRegister"
+        android:id="@+id/editProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterActivity">
+        tools:context=".editProfile">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="DAFTAR"
-            android:textColor="#D61C4E"
-            android:textSize="36dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+        <ImageView
+            android:id="@+id/icon_user_24"
+            android:layout_width="146dp"
+            android:layout_height="136dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="32dp"
+            android:padding="25dp"
+            android:src="@drawable/ic_user_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -33,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@id/icon_user_24"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:orientation="vertical">
@@ -58,7 +53,6 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/namaInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -85,35 +79,6 @@
                 android:layout_marginBottom="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="384dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/poppins"
-                android:text="Password"
-                android:textColor="#585858"
-                android:textSize="18dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Password"
-                app:errorEnabled="true"
-                app:passwordToggleEnabled="true"
-                android:layout_marginBottom="8dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -167,7 +132,6 @@
                 android:layout_marginBottom="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nomorTeleponInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -191,7 +155,7 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Daftar"
+                android:text="Ubah"
                 app:backgroundTint="#FEB139" />
         </LinearLayout>
 
@@ -212,13 +176,9 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppinsbold"
-                android:text="Reset"
+                android:text="Batal"
                 app:strokeColor="#FEB139" />
         </LinearLayout>
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>

@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import android.app.Activity
+import android.widget.TextView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -27,6 +28,13 @@ class FragmentProfile : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
+        val editProfile: TextView = view.findViewById(R.id.editProfil)
+
+        editProfile.setOnClickListener{
+            activity?.let { it1 ->
+
+            }
+        }
 
         btnLogout.setOnClickListener {
            activity?.let { it1 ->
@@ -42,7 +50,6 @@ class FragmentProfile : Fragment(){
            }
         }
     }
-
 
 
 
