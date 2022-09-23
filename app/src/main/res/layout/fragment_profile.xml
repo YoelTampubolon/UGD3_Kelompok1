@@ -4,179 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentProfile"
-    tools:layout_editor_absoluteX="5dp"
-    tools:layout_editor_absoluteY="0dp">
+    tools:context=".FragmentProfile">
 
 
     <ImageView
-        android:id="@+id/icon_user_24"
+        android:id="@+id/icon_person"
         android:layout_width="160dp"
-        android:layout_height="151dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:padding="25dp"
-        android:src="@drawable/ic_user_24"
+        android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--    <TextView-->
-<!--        android:id="@+id/textProfile"-->
-<!--        android:layout_width="398dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:fontFamily="@font/poppinsbold"-->
-<!--        android:gravity="center"-->
-<!--        android:text="Profile"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="1dp"-->
-<!--        tools:layout_editor_absoluteY="170dp" />-->
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/editProfil"-->
-<!--        android:layout_width="384dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text="Edit Profil"-->
-<!--        android:textColor="#585858"-->
-<!--        android:textSize="18dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="158dp"-->
-<!--        tools:layout_editor_absoluteY="208dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/icon_edit_24"-->
-<!--        android:layout_width="70dp"-->
-<!--        android:layout_height="73dp"-->
-<!--        android:layout_marginStart="108dp"-->
-<!--        android:layout_marginTop="184dp"-->
-<!--        android:padding="25dp"-->
-<!--        android:src="@drawable/ic_edit_24"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:tint="@color/grey" />-->
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/phonenumber"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="450dp" />-->
 
     <TextView
-        android:id="@+id/nama"
-        android:layout_width="324dp"
-        android:layout_height="44dp"
+        android:id="@+id/inputNamaProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:fontFamily="@font/poppins"
         android:text=""
         android:textColor="@color/black"
         android:textSize="23dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="308dp" />
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_person" />
 
 <!--    <TextView-->
-<!--        android:id="@+id/email"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text="Email"-->
-<!--        android:textColor="#585858"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="355dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/inputemail"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text=""-->
+<!--        android:id="@+id/textProfile"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/poppinsbold"-->
+<!--        android:gravity="center"-->
+<!--        android:text="Profile"-->
+<!--        android:layout_marginTop="35dp"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="377dp" />-->
+<!--        android:textSize="30dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/icon_person"/>-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/Inputphonenumber"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text="No HP"-->
-<!--        android:textColor="#585858"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="429dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Alamat"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text="Tanggal Lahir"-->
-<!--        android:textColor="#585858"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="513dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/InputtglLahir"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="537dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/TglLahir"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text="Alamat"-->
-<!--        android:textColor="#585858"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="598dp" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Inputalamat"-->
-<!--        android:layout_width="324dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:fontFamily="@font/poppins"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="23dp"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="37dp"-->
-<!--        tools:layout_editor_absoluteY="622dp" />-->
+    <Button
+        android:id="@+id/editBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profil"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="140dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputNamaProfile" />
 
     <TextView
-        android:id="@+id/namaLengkap"
-        android:layout_width="324dp"
-        android:layout_height="44dp"
+        android:id="@+id/nama"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
         android:fontFamily="@font/poppins"
         android:text="Nama Lengkap"
         android:textColor="#585858"
         android:textSize="23dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="280dp" />
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editBtn"
+        />
+
+    <TextView
+        android:id="@+id/inputNama"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nama" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="Email"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputNama"/>
+
+    <TextView
+        android:id="@+id/inputEmail"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+        android:id="@+id/phoneNumber"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="No HP"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputEmail" />
+
+    <TextView
+        android:id="@+id/inputPhonenumber"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phoneNumber" />
+
+        <TextView
+        android:id="@+id/tglLahir"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="Tanggal Lahir"
+        android:textColor="#585858"
+        android:textSize="23dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputPhonenumber"/>
+
+
+        <TextView
+        android:id="@+id/inputTglLahir"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/poppins"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tglLahir"/>
+
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"
@@ -189,11 +174,13 @@
         android:textColor="#FEB139"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textProfile"
+        app:layout_constraintTop_toBottomOf="@+id/inputTglLahir"
         app:layout_constraintVertical_bias="0.875"
         app:strokeColor="#FEB139" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
