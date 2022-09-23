@@ -1,6 +1,8 @@
 package com.ugd3.ugd3_kelompok1
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,9 +20,13 @@ class MainActivity : AppCompatActivity() {
     var tempEmail : String = "admin"
     var tempPass : String = "admin"
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
 
         inputEmail = findViewById(R.id.inputLayoutEmailLogin)
         inputPassword = findViewById(R.id.inputLayoutPasswordLogin)
@@ -72,6 +78,10 @@ class MainActivity : AppCompatActivity() {
 
             val user = donateDao.checkUser(email, password)
             if(user != null) {
+                sharedPreferences.edit()
+                    .putInt("id", user.id)
+                    .apply()
+
                 checkLogin = true
             } else {
                 Snackbar.make(loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()

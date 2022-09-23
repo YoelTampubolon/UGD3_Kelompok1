@@ -18,7 +18,7 @@ interface DonateDao {
     fun getDonates() : List<Donate>
 
     @Query("SELECT * FROM donate WHERE id =:donate_id")
-    fun getDonate(donate_id: Int) : List<Donate>
+    fun getDonate(donate_id: Int) : Donate
 
     @Query("SELECT * FROM donate WHERE email = :email AND password = :password;")
     fun checkUser(email: String, password: String): Donate?

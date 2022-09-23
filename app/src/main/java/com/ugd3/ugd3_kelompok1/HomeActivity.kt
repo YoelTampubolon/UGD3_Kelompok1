@@ -1,15 +1,20 @@
 package com.ugd3.ugd3_kelompok1
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
 
         getSupportActionBar()?.hide()
         var bottomNavigationView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -42,6 +47,10 @@ class HomeActivity : AppCompatActivity() {
                 replace(R.id.layout_fragment,fragment)
                 commit()
             }
+    }
+
+    fun getSharedPreferences(): SharedPreferences {
+        return sharedPreferences
     }
 
 }

@@ -9,11 +9,15 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import android.app.Activity
+import android.content.SharedPreferences
 import android.widget.TextView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.ugd3.ugd3_kelompok1.Donasi.Home
+import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 
 
 class FragmentProfile : Fragment(){
+    private lateinit var nama: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,13 +32,19 @@ class FragmentProfile : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
-        val editProfile: TextView = view.findViewById(R.id.editProfil)
 
-        editProfile.setOnClickListener{
-            activity?.let { it1 ->
+        val db by lazy { UserDB(activity as HomeActivity) }
+        val donateDao = db.donateDao()
 
-            }
-        }
+        val sharedPreferences = (activity as HomeActivity).getSharedPreferences()
+
+        val user = donateDao.getDonate(sharedPreferences.getInt("id", 0))
+        nama = view.findViewById(R.id.nama)
+
+        // set text
+        nama.setText(user.namaLengkap)
+
+
 
         btnLogout.setOnClickListener {
            activity?.let { it1 ->
