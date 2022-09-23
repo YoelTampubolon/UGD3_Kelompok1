@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 
 class MainActivity : AppCompatActivity() {
     private lateinit var inputEmail : TextInputLayout
@@ -65,9 +66,14 @@ class MainActivity : AppCompatActivity() {
                 checkLogin = false
             }
 
-            if((email == "admin" && password == "admin") || (email==tempEmail && password==tempPass) ) checkLogin = true
-            
-            else {
+
+            val db by lazy { UserDB(this) }
+            val donateDao = db.donateDao()
+
+            val user = donateDao.checkUser(email, password)
+            if(user != null) {
+                checkLogin = true
+            } else {
                 Snackbar.make(loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
             }
             if(!checkLogin) return@OnClickListener

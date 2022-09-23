@@ -6,18 +6,21 @@ import androidx.room.*
 interface DonateDao {
 
     @Insert
-    suspend fun addDonate(donate: Donate)
+    fun addDonate(donate: Donate)
 
     @Update
-    suspend fun updateDonate(donate: Donate)
+    fun updateDonate(donate: Donate)
 
     @Delete
-    suspend fun deleteDonate(donate: Donate)
+    fun deleteDonate(donate: Donate)
 
     @Query("SELECT * FROM donate")
-    suspend fun getDonates() : List<Donate>
+    fun getDonates() : List<Donate>
 
     @Query("SELECT * FROM donate WHERE id =:donate_id")
-    suspend fun getDonate(donate_id: Int) : List<Donate>
+    fun getDonate(donate_id: Int) : List<Donate>
+
+    @Query("SELECT * FROM donate WHERE email = :email AND password = :password;")
+    fun checkUser(email: String, password: String): Donate?
 
 }

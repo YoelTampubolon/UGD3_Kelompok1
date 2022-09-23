@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.ugd3.ugd3_kelompok1.Donate
 import com.ugd3.ugd3_kelompok1.DonateDao
 
-@Database(
+@Database (
     entities = [Donate::class],
     version = 1
 )
@@ -28,6 +28,6 @@ abstract class UserDB: RoomDatabase() {
             context.applicationContext,
             UserDB::class.java,
             "user.db"
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 }

@@ -11,6 +11,6 @@ data class Donate (
     val namaLengkap: String,
     val email: String,
     val password: String,
-    val tanggalLahir: Date,
-    val nomorTelepon: Int
+    val tanggalLahir: String,
+    val nomorTelepon: String
 )

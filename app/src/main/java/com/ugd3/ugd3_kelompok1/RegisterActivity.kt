@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.databinding.ActivityRegisterBinding
 import java.util.*
 
@@ -26,6 +27,9 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val db by lazy { UserDB(this) }
+        val donateDao = db.donateDao()
 
         val cal = Calendar.getInstance()
         val myYear = cal.get(Calendar.YEAR)
@@ -71,10 +75,15 @@ class RegisterActivity : AppCompatActivity() {
             if(NamaLengkap.isNotEmpty() && password.length==8 && email.isNotEmpty() && tanggalLahir.isNotEmpty() && NoTelpon.isNotEmpty()) {
                 error = false
                 Snackbar.make(binding.activityRegister, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
-
-
             }
             if(error)return@OnClickListener
+
+//            val users = donateDao.getDonates()
+//            println(users)
+            // Add user to database
+            val donate = Donate(0, NamaLengkap, email, password, tanggalLahir, NoTelpon)
+            donateDao.addDonate(donate)
+
             val intent = Intent(this@RegisterActivity, MainActivity::class.java)
             intent.putExtra("register", mBundle)
             startActivity(intent)
