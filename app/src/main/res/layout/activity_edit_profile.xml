@@ -9,7 +9,7 @@
         android:id="@+id/editProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".editProfile">
+        tools:context=".EditProfileActivity">
 
         <ImageView
             android:id="@+id/icon_user_24"
@@ -59,31 +59,6 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="384dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/poppins"
-                android:text="Email"
-                android:textColor="#585858"
-                android:textSize="18dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputLayoutEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="example@gmail.com"
-                app:errorEnabled="true"
-                android:layout_marginBottom="8dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tanggalLahir"
@@ -150,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDaftar"
+                android:id="@+id/btnUbah"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
@@ -170,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnReset"
+                android:id="@+id/btnBatal"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
