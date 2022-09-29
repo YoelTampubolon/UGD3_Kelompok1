@@ -23,9 +23,6 @@
             android:name=".AddDonaturActivity"
             android:exported="false" />
         <activity
-            android:name=".addDonatur"
-            android:exported="false" />
-        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
@@ -46,6 +43,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <receiver android:name=".NotificationReceiver"/>
     </application>
+
 
 </manifest>

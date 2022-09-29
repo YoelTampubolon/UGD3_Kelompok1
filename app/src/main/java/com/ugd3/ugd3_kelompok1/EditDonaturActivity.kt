@@ -1,8 +1,15 @@
 package com.ugd3.ugd3_kelompok1
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.ugd3.ugd3_kelompok1.Donasi.Constant
 import com.ugd3.ugd3_kelompok1.Donasi.DonaturDB
 import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
@@ -18,13 +25,36 @@ class EditDonaturActivity : AppCompatActivity() {
     private var noteId: Int = 0
 
     private lateinit var binding: ActivityEditDonaturBinding
+    private val CHANNEL_ID_1 = "channel_notification_01"
+    private val notificationId1 = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_donatur)
+//        setContentView(R.layout.activity_edit_donatur)
+        binding = ActivityEditDonaturBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
+
+        createNotificationChannel()
+
         supportActionBar?.hide()
         setupView()
         setupListener()
+    }
+
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name = "Notification Title"
+            val descriptionText = "Notification Description"
+
+            val channel1 = NotificationChannel(CHANNEL_ID_1,name,
+                NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = descriptionText
+            }
+
+
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel1)
+        }
     }
 
     fun setupView(){
@@ -47,6 +77,7 @@ class EditDonaturActivity : AppCompatActivity() {
 
     private fun setupListener() {
         button_save.setOnClickListener {
+            sendNotification1()
             CoroutineScope(Dispatchers.IO).launch {
                 db.donaturDao().addDonaturs(
                     Donaturs(0,edit_nama.text.toString(),
@@ -63,6 +94,24 @@ class EditDonaturActivity : AppCompatActivity() {
                 )
                 finish()
             }
+        }
+    }
+
+    private fun sendNotification1() {
+        val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
+            .setSmallIcon(R.drawable.ic_favorite)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setColor(Color.GREEN)
+//            Big Text  + Inbox Style
+            .setStyle(
+                NotificationCompat.InboxStyle()
+                    .addLine("Nama " +binding.editNama.text.toString())
+                    .addLine("Nominal " + binding.editNominal.text.toString())
+                    .addLine( "Alamat " + binding.editAlamat.text.toString())
+                    .setBigContentTitle("Berhasil Tambah Data Donatur")
+            )
+        with(NotificationManagerCompat.from(this)){
+            notify(notificationId1, builder.build())
         }
     }
 

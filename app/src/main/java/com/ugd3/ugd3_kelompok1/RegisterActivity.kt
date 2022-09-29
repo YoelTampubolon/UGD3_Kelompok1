@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -139,14 +140,8 @@ class RegisterActivity : AppCompatActivity() {
                 description = descriptionText
             }
 
-//            val channel2 = NotificationChannel(CHANNEL_ID_2,name,
-//                NotificationManager.IMPORTANCE_DEFAULT).apply {
-//                description = descriptionText
-//            }
-
             val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel1)
-//            notificationManager.createNotificationChannel(channel2)
         }
     }
 
@@ -158,29 +153,30 @@ class RegisterActivity : AppCompatActivity() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this,0,intent,0)
 
         val broadcastIntent: Intent = Intent(this, NotificationReceiver::class.java)
-//        broadcastIntent.putExtra("toastMessage", binding?.etMessage?.text.toString())
+        broadcastIntent.putExtra("toastMessage","Selamat Datang " + binding.inputLayoutNama.editText?.text.toString())
         val actionIntent = PendingIntent.getBroadcast(this,0,broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-//        val picture = BitmapFactory.decodeResource(resources,R.drawable.donation)
+        val picture = BitmapFactory.decodeResource(resources,R.drawable.logo)
         val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
             .setSmallIcon(R.drawable.logo)
-//            .setContentTitle(binding?.etTitle?.text.toString())
-//            .setContentText(binding?.etMessage?.text.toString())
+            .setContentText("Berhasil Register")
+//                Big Picture Style
+            .setLargeIcon(picture)
+            .setStyle(NotificationCompat.BigPictureStyle()
+                .bigLargeIcon(null)
+                .bigPicture(picture))
             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-            .setColor(Color.BLUE)
+            .setColor(Color.RED)
             .setAutoCancel(true)
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
-            .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
+            .addAction(R.mipmap.ic_launcher, "Pesan", actionIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(this)){
             notify(notificationId1,builder.build())
         }
     }
-
-
-
 
     override fun onBackPressed() {
         AlertDialog.Builder(this).apply {
