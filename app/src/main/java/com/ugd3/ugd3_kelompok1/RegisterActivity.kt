@@ -1,7 +1,13 @@
 package com.ugd3.ugd3_kelompok1
 
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +17,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -21,12 +29,17 @@ import java.util.*
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+    private val CHANNEL_ID_1 = "channel_notification_01"
+    private val notificationId1 = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        createNotificationChannel()
+
 
         val db by lazy { UserDB(this) }
         val donateDao = db.donateDao()
@@ -37,6 +50,9 @@ class RegisterActivity : AppCompatActivity() {
         val myDay = cal.get(Calendar.DAY_OF_MONTH)
 
         binding.btnDaftar.setOnClickListener (View.OnClickListener{
+//          Notification
+            sendNotification1()
+
             val mBundle = Bundle()
             var error = true
 
@@ -112,6 +128,59 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name = "Notification Title"
+            val descriptionText = "Notification Description"
+
+            val channel1 = NotificationChannel(CHANNEL_ID_1,name,
+                NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = descriptionText
+            }
+
+//            val channel2 = NotificationChannel(CHANNEL_ID_2,name,
+//                NotificationManager.IMPORTANCE_DEFAULT).apply {
+//                description = descriptionText
+//            }
+
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel1)
+//            notificationManager.createNotificationChannel(channel2)
+        }
+    }
+
+    private fun sendNotification1(){
+        val intent: Intent = Intent(this, MainActivity::class.java).apply{
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this,0,intent,0)
+
+        val broadcastIntent: Intent = Intent(this, NotificationReceiver::class.java)
+//        broadcastIntent.putExtra("toastMessage", binding?.etMessage?.text.toString())
+        val actionIntent = PendingIntent.getBroadcast(this,0,broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+//        val picture = BitmapFactory.decodeResource(resources,R.drawable.donation)
+        val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
+            .setSmallIcon(R.drawable.logo)
+//            .setContentTitle(binding?.etTitle?.text.toString())
+//            .setContentText(binding?.etMessage?.text.toString())
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .setColor(Color.BLUE)
+            .setAutoCancel(true)
+            .setOnlyAlertOnce(true)
+            .setContentIntent(pendingIntent)
+            .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this)){
+            notify(notificationId1,builder.build())
+        }
+    }
+
+
+
 
     override fun onBackPressed() {
         AlertDialog.Builder(this).apply {
