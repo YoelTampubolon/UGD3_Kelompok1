@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val CHANNEL_ID_1 = "channel_notification_01"
     private val notificationId1 = 101
+    private val notificationId2 = 102
+    private val notificationId3 = 103
+    private val notificationId4 = 104
     private val KEY_TEXT_REPLY = "key_text_reply"
 
     var mBundle : Bundle? = null
@@ -193,9 +196,9 @@ class MainActivity : AppCompatActivity() {
 
         NotificationManagerCompat.from(this).apply {
             notify(notificationId1, newMessageNotification)
-            notify(notificationId1, newMessageNotification2)
-            notify(notificationId1, newMessageNotification3)
-            notify(notificationId1, newMessageNotification4)
+            notify(notificationId2, newMessageNotification2)
+            notify(notificationId3, newMessageNotification3)
+            notify(notificationId4, newMessageNotification4)
             notify(SUMMARY_ID, summaryNotification)
         }
     }
