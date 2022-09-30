@@ -20,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
 import com.ugd3.ugd3_kelompok1.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -143,5 +144,61 @@ class MainActivity : AppCompatActivity() {
         )
             .addRemoteInput(remoteInput)
             .build()
+
+        val GROUP_KEY_WORK_EMAIL = "com.android.example.WORK_EMAIL"
+        val SUMMARY_ID = 0
+
+        val newMessageNotification = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID_1)
+            .setContentTitle(binding.inputLayoutEmailLogin.editText?.text.toString())
+            .setSmallIcon(R.drawable.ic_baseline_notifications)
+            .setContentText("HI!! Selamat Datang ")
+            .setGroup(GROUP_KEY_WORK_EMAIL)
+            .build()
+
+        val newMessageNotification2 = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID_1)
+            .setContentTitle(binding.inputLayoutEmailLogin.editText?.text.toString())
+            .setSmallIcon(R.drawable.ic_baseline_notifications)
+            .setContentText("Donasi Sekarang, banyak yang membutuhkan mu")
+            .setGroup(GROUP_KEY_WORK_EMAIL)
+            .build()
+
+        val newMessageNotification3 = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID_1)
+            .setContentTitle(binding.inputLayoutEmailLogin.editText?.text.toString())
+            .setSmallIcon(R.drawable.ic_baseline_notifications)
+            .setContentText("Aplikasi Ini Membantu Banyak Orang")
+            .setGroup(GROUP_KEY_WORK_EMAIL)
+            .build()
+
+        val newMessageNotification4 = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID_1)
+            .setContentTitle(binding.inputLayoutEmailLogin.editText?.text.toString())
+            .setSmallIcon(R.drawable.ic_baseline_notifications)
+            .setContentText("Ayo Donasi Sekarang!!!")
+            .setGroup(GROUP_KEY_WORK_EMAIL)
+            .build()
+
+        val summaryNotification = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID_1)
+            .setContentTitle(binding.inputLayoutEmailLogin.editText?.text.toString())
+            .setContentText("Two new messages")
+            .setSmallIcon(R.drawable.ic_baseline_message)
+            .setStyle(NotificationCompat.InboxStyle()
+                .addLine("Check this out")
+                .addLine("Ayo Berdonasi")
+                .setBigContentTitle("2 new messages")
+                .setSummaryText("Vikram@example.com"))
+            //specify which group this notification belongs to
+            .setGroup(GROUP_KEY_WORK_EMAIL)
+            //set this notification as the summary for the group
+            .setGroupSummary(true)
+            .build()
+
+        NotificationManagerCompat.from(this).apply {
+            notify(notificationId1, newMessageNotification)
+            notify(notificationId1, newMessageNotification2)
+            notify(notificationId1, newMessageNotification3)
+            notify(notificationId1, newMessageNotification4)
+            notify(SUMMARY_ID, summaryNotification)
+        }
     }
 }
+
+
