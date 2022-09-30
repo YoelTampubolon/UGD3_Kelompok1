@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val CHANNEL_ID_1 = "channel_notification_01"
     private val notificationId1 = 101
-    private val KEY_TEXT_REPLY = "key_text_reply"
+//    private val KEY_TEXT_REPLY = "key_text_reply"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -156,28 +156,27 @@ class RegisterActivity : AppCompatActivity() {
         val actionIntent = PendingIntent.getBroadcast(this,0,broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val picture = BitmapFactory.decodeResource(resources,R.drawable.logo)
-        val replyLabel = "Enter your reply"
-        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
-            .setLabel(replyLabel)
-            .build()
+//        val replyLabel = "Enter your reply"
+//        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
+//            .setLabel(replyLabel)
+//            .build()
+//
+//        val resultsIntent = Intent(this, RegisterActivity::class.java)
+//
+//        val resultPendingIntent = PendingIntent.getActivity(
+//            this,
+//            0,
+//            resultsIntent, PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+//        )
+//        val icon = Icon.createWithResource(this@RegisterActivity,
+//        android.R.drawable.ic_dialog_info)
 
-        val resultsIntent = Intent(this, RegisterActivity::class.java)
-
-        val resultPendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            resultsIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        val icon = Icon.createWithResource(this@RegisterActivity,
-        android.R.drawable.ic_dialog_info)
-
-        val replyAction = Notification.Action.Builder(
-            icon,
-            "Reply", resultPendingIntent
-        )
-            .addRemoteInput(remoteInput)
-            .build()
+//        val replyAction = Notification.Action.Builder(
+//            icon,
+//            "Reply", resultPendingIntent
+//        )
+//            .addRemoteInput(remoteInput)
+//            .build()
 
 
         val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
@@ -193,7 +192,7 @@ class RegisterActivity : AppCompatActivity() {
             .setAutoCancel(true)
             .setOnlyAlertOnce(true)
             .setContentIntent(pendingIntent)
-            .addAction(R.mipmap.ic_launcher, "Reply", actionIntent)
+            .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(this)){

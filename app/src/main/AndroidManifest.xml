@@ -17,9 +17,6 @@
             android:name=".EditDonaturActivity"
             android:exported="false" />
         <activity
-            android:name=".DonaturAdapter"
-            android:exported="false" />
-        <activity
             android:name=".AddDonaturActivity"
             android:exported="false" />
         <activity
@@ -43,6 +40,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <receiver android:name=".NotificationReceiver"/>
     </application>
 

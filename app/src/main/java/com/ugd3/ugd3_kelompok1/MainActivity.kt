@@ -1,21 +1,32 @@
 package com.ugd3.ugd3_kelompok1
 
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.Icon
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
+import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
+import com.ugd3.ugd3_kelompok1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var inputEmail : TextInputLayout
-    private lateinit var inputPassword : TextInputLayout
-    private lateinit var loginLayout : ConstraintLayout
+    private lateinit var binding: ActivityMainBinding
+    private val CHANNEL_ID_1 = "channel_notification_01"
+    private val notificationId1 = 101
+    private val KEY_TEXT_REPLY = "key_text_reply"
+
     var mBundle : Bundle? = null
     var tempEmail : String = "admin"
     var tempPass : String = "admin"
@@ -24,51 +35,50 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
+
+        createNotificationChannel()
 
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
 
-        inputEmail = findViewById(R.id.inputLayoutEmailLogin)
-        inputPassword = findViewById(R.id.inputLayoutPasswordLogin)
-        loginLayout = findViewById(R.id.loginLayout)
-        val btnMasuk: Button = findViewById(R.id.btnMasuk)
-        val btnDaftar: Button = findViewById(R.id.btnDaftar)
 
         if(intent.getBundleExtra("register")!=null){
             mBundle = intent.getBundleExtra("register")
             tempEmail = mBundle!!.getString("email")!!
             tempPass = mBundle!!.getString("password")!!
             println(tempEmail)
-            inputEmail.editText?.setText(tempEmail)
-            inputPassword.editText?.setText(tempPass)
+            binding.inputLayoutEmailLogin.editText?.setText(tempEmail)
+            binding.inputLayoutPasswordLogin.editText?.setText(tempPass)
         }
 
-        btnDaftar.setOnClickListener(View.OnClickListener  {
+        binding.btnDaftar.setOnClickListener(View.OnClickListener  {
             val moveDaftar = Intent(this@MainActivity, RegisterActivity::class.java)
             startActivity(moveDaftar)
         })
 
-        btnMasuk.setOnClickListener(View.OnClickListener {
+        binding.btnMasuk.setOnClickListener(View.OnClickListener {
+            sendNotification1()
             var checkLogin = false
-            inputEmail.setError(null)
-            inputPassword.setError(null)
-            val email: String = inputEmail.getEditText()?.getText().toString()
-            val password: String = inputPassword.getEditText()?.getText().toString()
+            binding.inputLayoutEmailLogin.setError(null)
+            binding.inputLayoutPasswordLogin.setError(null)
+            val email: String = binding.inputLayoutEmailLogin.getEditText()?.getText().toString()
+            val password: String = binding.inputLayoutPasswordLogin.getEditText()?.getText().toString()
 
             if(email.isEmpty() || password.isEmpty()) {
                 if(email.isEmpty()) {
-                    inputEmail.setError("Email tidak boleh kosong")
+                    binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
                     checkLogin = false
                 }else {
-                    inputPassword.setError("Password tidak boleh kosong")
+                    binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
                     checkLogin = false
                 }
 
             }
 
             if(email.isEmpty() && password.isEmpty()) {
-                inputEmail.setError("Email tidak boleh kosong")
-                inputPassword.setError("Password tidak boleh kosong")
+                binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
+                binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
                 checkLogin = false
             }
 
@@ -84,11 +94,54 @@ class MainActivity : AppCompatActivity() {
 
                 checkLogin = true
             } else {
-                Snackbar.make(loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
             }
             if(!checkLogin) return@OnClickListener
             val moveHome = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(moveHome)
         })
+    }
+
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name = "Notification Title"
+            val descriptionText = "Notification Description"
+
+            val channel1 = NotificationChannel(CHANNEL_ID_1,name,
+                NotificationManager.IMPORTANCE_DEFAULT).apply {
+                description = descriptionText
+            }
+
+
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel1)
+        }
+    }
+
+    private fun sendNotification1(){
+        val resultsIntent = Intent(this, RegisterActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+
+        val replyLabel = "Enter your reply"
+        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
+            .setLabel(replyLabel)
+            .build()
+
+        val resultPendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            resultsIntent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val icon = Icon.createWithResource(this@MainActivity,
+            android.R.drawable.ic_dialog_info)
+
+        val replyAction = Notification.Action.Builder(
+            icon,
+            "Reply", resultPendingIntent
+        )
+            .addRemoteInput(remoteInput)
+            .build()
     }
 }
