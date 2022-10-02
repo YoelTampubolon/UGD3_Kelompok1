@@ -102,6 +102,8 @@ class EditDonaturActivity : AppCompatActivity() {
             .setSmallIcon(R.drawable.ic_favorite)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setColor(Color.GREEN)
+            .setContentTitle("Daftar Donatur")
+            .setContentText("Ayo Mari Berdonasi")
 //            Big Text  + Inbox Style
             .setStyle(
                 NotificationCompat.InboxStyle()
@@ -109,6 +111,7 @@ class EditDonaturActivity : AppCompatActivity() {
                     .addLine("Nominal " + binding.editNominal.text.toString())
                     .addLine( "Alamat " + binding.editAlamat.text.toString())
                     .setBigContentTitle("Berhasil Tambah Data Donatur")
+                    .setSummaryText("Rangkuman Text")
             )
         with(NotificationManagerCompat.from(this)){
             notify(notificationId1, builder.build())

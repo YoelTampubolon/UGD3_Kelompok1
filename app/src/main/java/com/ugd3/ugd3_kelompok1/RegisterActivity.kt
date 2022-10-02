@@ -156,28 +156,6 @@ class RegisterActivity : AppCompatActivity() {
         val actionIntent = PendingIntent.getBroadcast(this,0,broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val picture = BitmapFactory.decodeResource(resources,R.drawable.logo)
-//        val replyLabel = "Enter your reply"
-//        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
-//            .setLabel(replyLabel)
-//            .build()
-//
-//        val resultsIntent = Intent(this, RegisterActivity::class.java)
-//
-//        val resultPendingIntent = PendingIntent.getActivity(
-//            this,
-//            0,
-//            resultsIntent, PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-//        )
-//        val icon = Icon.createWithResource(this@RegisterActivity,
-//        android.R.drawable.ic_dialog_info)
-
-//        val replyAction = Notification.Action.Builder(
-//            icon,
-//            "Reply", resultPendingIntent
-//        )
-//            .addRemoteInput(remoteInput)
-//            .build()
-
 
         val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
             .setSmallIcon(R.drawable.logo)
