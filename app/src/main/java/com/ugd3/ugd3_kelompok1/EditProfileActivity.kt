@@ -9,16 +9,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import kotlinx.android.synthetic.main.activity_edit_profile.*
-import kotlinx.android.synthetic.main.activity_edit_profile.view.*
 import java.util.*
+import com.ugd3.ugd3_kelompok1.databinding.ActivityEditProfileBinding
 
 class EditProfileActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEditProfileBinding
+
     private lateinit var inputNama: TextInputLayout
     private lateinit var inputTanggalLahir : TextInputLayout
     private lateinit var inputNomorTelepon : TextInputLayout
@@ -30,6 +30,7 @@ class EditProfileActivity : AppCompatActivity() {
         inputNama = findViewById(R.id.inputLayoutNama)
         inputTanggalLahir = findViewById(R.id.inputLayoutTanggalLahir)
         inputNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
+
         val btnUbah: Button = findViewById(R.id.btnUbah)
         val btnBatal: Button = findViewById(R.id.btnBatal)
         val profileFragment = FragmentProfile()

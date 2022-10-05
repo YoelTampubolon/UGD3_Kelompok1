@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ugd3.ugd3_kelompok1.databinding.FragmentDonasiBinding
 
 
 class FragmentDonasi : Fragment() {
+    private lateinit var binding: FragmentDonasiBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

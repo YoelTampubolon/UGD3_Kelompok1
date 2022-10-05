@@ -40,7 +40,6 @@ class RegisterActivity : AppCompatActivity() {
 
         createNotificationChannel()
 
-
         val db by lazy { UserDB(this) }
         val donateDao = db.donateDao()
 

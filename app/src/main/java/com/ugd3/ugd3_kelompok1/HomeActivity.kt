@@ -6,18 +6,24 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.ugd3.ugd3_kelompok1.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var binding : ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+//        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
 
         getSupportActionBar()?.hide()
-        var bottomNavigationView: BottomNavigationView = findViewById(R.id.nav_view)
+        val bottomNavigationView: BottomNavigationView = binding.navView
+//        var bottomNavigationView: BottomNavigationView = findViewById(R.id.nav_view)
         val homeFragment = FragmentHome()
         val donasiFragment = FragmentDonasi()
         val profileFragment = FragmentProfile()

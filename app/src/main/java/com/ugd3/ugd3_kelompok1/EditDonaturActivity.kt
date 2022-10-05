@@ -13,7 +13,6 @@ import androidx.core.app.NotificationManagerCompat
 import com.ugd3.ugd3_kelompok1.Donasi.Constant
 import com.ugd3.ugd3_kelompok1.Donasi.DonaturDB
 import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
-import kotlinx.android.synthetic.main.activity_add_donatur.*
 import kotlinx.android.synthetic.main.activity_edit_donatur.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -4,23 +4,16 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.graphics.drawable.Icon
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
-import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
 import com.ugd3.ugd3_kelompok1.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
