@@ -71,20 +71,8 @@ class FragmentProfile : Fragment(){
 
 
         btnLogout.setOnClickListener {
-           activity?.let { it1 ->
-               MaterialAlertDialogBuilder(it1)
-                   .setTitle("Apakah anda ingin keluar?")
-                   .setNegativeButton("No") {dialog, which ->
-
-                   }
-                   .setPositiveButton("yes") {dialog, which ->
-                       activity?.finish()
-                   }
-                   .show()
-           }
+            val moveEditBtn = Intent(this@FragmentProfile.context, MainActivity::class.java)
+            startActivity(moveEditBtn)
         }
     }
-
-
-
 }
