@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         val resultPendingIntent = PendingIntent.getActivity(
             this,
             0,
-            resultsIntent, PendingIntent.FLAG_UPDATE_CURRENT
+            resultsIntent, PendingIntent.FLAG_MUTABLE
         )
         val icon = Icon.createWithResource(this@MainActivity,
             android.R.drawable.ic_dialog_info)

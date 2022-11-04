@@ -48,7 +48,7 @@ class FragmentLocation : Fragment() {
 
         mapController = mapView.controller as MapController
         mapController.setCenter(geoPoint)
-        mapController.zoomTo(6)
+        mapController.zoomTo(18)
 
         getLocationMarker()
     }
