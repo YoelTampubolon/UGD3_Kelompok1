@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
+import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import java.util.*
 import com.ugd3.ugd3_kelompok1.databinding.ActivityEditProfileBinding
@@ -25,14 +26,23 @@ class EditProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_profile)
 
-        inputNama = findViewById(R.id.inputLayoutNama)
-        inputTanggalLahir = findViewById(R.id.inputLayoutTanggalLahir)
-        inputNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
+//        setContentView(R.layout.activity_edit_profile)
+        binding = ActivityEditProfileBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
-        val btnUbah: Button = findViewById(R.id.btnUbah)
-        val btnBatal: Button = findViewById(R.id.btnBatal)
+        inputNama = binding.inputLayoutNama
+        inputTanggalLahir = binding.inputLayoutTanggalLahir
+        inputNomorTelepon = binding.inputLayoutNomorTelepon
+
+//        inputNama = findViewById(R.id.inputLayoutNama)
+//        inputTanggalLahir = findViewById(R.id.inputLayoutTanggalLahir)
+//        inputNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
+
+        val btnUbah: Button = binding.btnUbah
+        val btnBatal: Button = binding.btnBatal
+//        val btnUbah: Button = findViewById(R.id.btnUbah)
+//        val btnBatal: Button = findViewById(R.id.btnBatal)
         val profileFragment = FragmentProfile()
 
         val db by lazy { UserDB(this) }

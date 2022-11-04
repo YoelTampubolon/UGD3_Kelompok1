@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.content.Intent
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,7 +35,7 @@ class FragmentProfile : Fragment(){
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
         val btnEdit: Button = view.findViewById(R.id.editBtn)
         val imageDelete : ImageView = view.findViewById(R.id.icon_delete)
-
+        val imageCamera : ImageView = view.findViewById(R.id.iconCamera)
         val db by lazy { UserDB(activity as HomeActivity) }
         val donateDao = db.donateDao()
 
@@ -61,8 +62,10 @@ class FragmentProfile : Fragment(){
             startActivity(moveDeleteImage)
         }
 
-
-
+        imageCamera.setOnClickListener{
+            val moveCamera = Intent(this@FragmentProfile.context, CameraActivity::class.java)
+            startActivity(moveCamera)
+        }
 
         btnEdit.setOnClickListener{
             val moveEditBtn = Intent(this@FragmentProfile.context, EditProfileActivity::class.java)

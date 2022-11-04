@@ -9,7 +9,12 @@
     <item
         android:id="@+id/nav_donasi"
         android:icon="@drawable/ic_note"
-        android:title="Donasi" />
+        android:title="Donate" />
+
+    <item
+        android:id="@+id/nav_lokasi"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="Location" />
 
     <item
         android:id="@+id/nav_profile"

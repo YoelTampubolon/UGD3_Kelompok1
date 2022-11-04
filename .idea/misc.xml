@@ -26,6 +26,9 @@
         <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/layout/rv_item_home.xml" value="0.2028985507246377" />
         <entry key="..\:/ATMA JAYA/Semester 5/PBP/Praktikum_0565/Praktikum-PBP-0565/3/UGD3_Kelompok1/app/src/main/res/menu/home_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/bg_circle.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/bg_rounded_rect.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/bg_triangle.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/bgstyle.xml" value="0.198" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/borderbutton.xml" value="0.198" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/drawable/home_icon.xml" value="0.1635" />
@@ -41,13 +44,18 @@
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_edit_donatur.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_edit_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_location.xml" value="0.21574074074074073" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donasi.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_donatur.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_location.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/layout_camera.xml" value="0.253125" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/layout_cameraprofile.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/layout_tooltip.xml" value="0.14537037037037037" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_donatur.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_item_donatur.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProject/UGD3_Kelompok1/app/src/main/res/layout/rv_item_home.xml" value="0.20416666666666666" />

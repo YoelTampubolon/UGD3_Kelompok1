@@ -22,13 +22,23 @@
     <ImageView
         android:id="@+id/icon_person"
         android:layout_width="160dp"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:padding="25dp"
         android:src="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iconCamera"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon_person"
+        android:src="@drawable/ic_baseline_photo_camera_24" />
 
     <TextView
         android:id="@+id/inputNamaProfile"
@@ -41,7 +51,7 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icon_person" />
+        app:layout_constraintTop_toBottomOf="@id/iconCamera" />
 
 
     <Button
@@ -50,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Edit Profil"
         android:fontFamily="@font/poppins"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="140dp"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

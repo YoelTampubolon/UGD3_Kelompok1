@@ -27,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
         val homeFragment = FragmentHome()
         val donasiFragment = FragmentDonasi()
         val profileFragment = FragmentProfile()
+        val lokasiFragment = FragmentLocation()
 
         setThatFragments(homeFragment)
 
@@ -37,6 +38,9 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.nav_donasi ->{
                     setThatFragments(donasiFragment)
+                }
+                R.id.nav_lokasi ->{
+                    setThatFragments(lokasiFragment)
                 }
                 R.id.nav_profile ->{
                     setThatFragments(profileFragment)
