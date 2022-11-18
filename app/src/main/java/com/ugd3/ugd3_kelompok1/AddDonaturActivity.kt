@@ -22,6 +22,9 @@ class AddDonaturActivity : AppCompatActivity() {
 
     val db by lazy {DonaturDB(this) }
     lateinit var donaturAdapter: DonaturAdapter
+    companion object{
+        const val LAUNCH_ADD_ACTIVITY = 123
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,23 +37,23 @@ class AddDonaturActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        donaturAdapter = DonaturAdapter(arrayListOf(), object :
-            DonaturAdapter.OnAdapterListener {
-            override fun onClick(donaturs: Donaturs) {
-                intentEdit(donaturs.id, Constant.TYPE_READ)
-            }
-            override fun onUpdate(donaturs: Donaturs) {
-                intentEdit(donaturs.id, Constant.TYPE_UPDATE)
-            }
-            override fun onDelete(donaturs: Donaturs) {
-                deleteDialog(donaturs)
-            }
-        })
-        rv_donaturs.apply {
-            layoutManager = LinearLayoutManager(applicationContext)
-            adapter = donaturAdapter
-        }
-    }
+//        donaturAdapter = DonaturAdapter(arrayListOf(), object :
+//            DonaturAdapter.OnAdapterListener {
+//            override fun onClick(donaturs: Donaturs) {
+//                intentEdit(donaturs.id, Constant.TYPE_READ)
+//            }
+//            override fun onUpdate(donaturs: Donaturs) {
+//                intentEdit(donaturs.id, Constant.TYPE_UPDATE)
+//            }
+//            override fun onDelete(donaturs: Donaturs) {
+//                deleteDialog(donaturs)
+//            }
+//        })
+//        rv_donaturs.apply {
+//            layoutManager = LinearLayoutManager(applicationContext)
+//            adapter = donaturAdapter
+//        }
+//    }
 
     private fun deleteDialog(donaturs: Donaturs){
         val alertDialog = AlertDialog.Builder(this)
