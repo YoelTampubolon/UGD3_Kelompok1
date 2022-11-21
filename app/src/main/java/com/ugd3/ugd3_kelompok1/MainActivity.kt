@@ -9,11 +9,24 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.android.volley.AuthFailureError
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.google.gson.Gson
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
+import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.databinding.ActivityMainBinding
+import com.ugd3.ugd3_kelompok1.models.Profile
+import org.json.JSONArray
+import org.json.JSONObject
+import java.nio.charset.StandardCharsets
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     private val notificationId3 = 103
     private val notificationId4 = 104
     private val KEY_TEXT_REPLY = "key_text_reply"
+    private var queue: RequestQueue? = null
+    var etEmail : String = ""
+    var etPassword : String = ""
+    var etNama : String = ""
 
     var mBundle : Bundle? = null
     var tempEmail : String = "admin"
@@ -34,10 +51,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        queue = Volley.newRequestQueue(this)
 
         createNotificationChannel()
 
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+
 
 
         if(intent.getBundleExtra("register")!=null){
@@ -55,47 +74,93 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.btnMasuk.setOnClickListener(View.OnClickListener {
-            sendNotification1()
+
+            etEmail = binding.inputLayoutEmailLogin.editText?.text.toString()
+            etPassword = binding.inputLayoutPasswordLogin.editText?.text.toString()
             var checkLogin = false
             binding.inputLayoutEmailLogin.setError(null)
             binding.inputLayoutPasswordLogin.setError(null)
             val email: String = binding.inputLayoutEmailLogin.getEditText()?.getText().toString()
             val password: String = binding.inputLayoutPasswordLogin.getEditText()?.getText().toString()
 
-            if(email.isEmpty() || password.isEmpty()) {
-                if(email.isEmpty()) {
-                    binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
-                    checkLogin = false
-                }else {
-                    binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
-                    checkLogin = false
+            val stringRequest : StringRequest = object:
+                StringRequest(Method.GET, ProfileApi.GET_ALL_URL, Response.Listener { response ->
+                    val gson = Gson()
+                    val jsonObject = JSONObject(response)
+                    val jsonArray = jsonObject.getJSONArray("data")
+                    var profile : Array<Profile> = gson.fromJson(jsonArray.toString(), Array<Profile>::class.java)
+
+                    if(email.isEmpty() || password.isEmpty()) {
+                        if(email.isEmpty()) {
+                            binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
+                            checkLogin = false
+                        }else {
+                            binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
+                            checkLogin = false
+                        }
+
+                    }
+
+                    if(email.isEmpty() && password.isEmpty()) {
+                        binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
+                        binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
+                        checkLogin = false
+                    }
+
+                    for (temp in profile){
+                        if (temp.email == etEmail && temp.password == etPassword){
+                            sharedPreferences.edit()
+                                .putInt("id", temp.id!!)
+                                .putString("nama", temp.namaLengkap)
+                                .apply()
+
+                            checkLogin=true
+                        }
+                    }
+
+                    if(checkLogin==true){
+                        Toast.makeText(this@MainActivity, "Data ditemukan", Toast.LENGTH_SHORT).show()
+                        sendNotification1()
+                        val move = Intent(this@MainActivity, HomeActivity::class.java)
+                        move.putExtra("nama", etNama)
+                        startActivity(move)
+                    }else{
+                        Toast.makeText(this@MainActivity, "Data tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                    }
+                }, Response.ErrorListener { error ->
+//                    srMahasiswa!!.isRefreshing = false
+                    try {
+                        val responseBody =
+                            String(error.networkResponse.data, StandardCharsets.UTF_8)
+                        val errors = JSONObject(responseBody)
+                        Toast.makeText(this@MainActivity, errors.getString("message"), Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception){
+                        Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                    }
+                }) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers["Accept"] = "application/json"
+                    return headers
                 }
 
             }
+            queue!!.add(stringRequest)
 
-            if(email.isEmpty() && password.isEmpty()) {
-                binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
-                binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
-                checkLogin = false
-            }
+//            val db by lazy { UserDB(this) }
+//            val donateDao = db.donateDao()
 
-
-            val db by lazy { UserDB(this) }
-            val donateDao = db.donateDao()
-
-            val user = donateDao.checkUser(email, password)
-            if(user != null) {
-                sharedPreferences.edit()
-                    .putInt("id", user.id)
-                    .apply()
-
-                checkLogin = true
-            } else {
-                Snackbar.make(binding.loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
-            }
-            if(!checkLogin) return@OnClickListener
-            val moveHome = Intent(this@MainActivity, HomeActivity::class.java)
-            startActivity(moveHome)
+//            val user = donateDao.checkUser(email, password)
+//            if(user != null) {
+//                sharedPreferences.edit()
+//                    .putInt("id", user.id)
+//                    .apply()
+//
+//                checkLogin = true
+//            } else {
+//                Snackbar.make(binding.loginLayout, "Login gagal! Username atau password salah", Snackbar.LENGTH_LONG).show()
+//            }
         })
     }
 

@@ -7,16 +7,16 @@
     tools:context=".FragmentProfile">
 
 
-    <ImageView
-        android:id="@+id/icon_delete"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_delete"
-        app:tint="@color/red" />
+<!--    <ImageView-->
+<!--        android:id="@+id/icon_delete"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:src="@drawable/ic_delete"-->
+<!--        app:tint="@color/red" />-->
 
 
     <ImageView

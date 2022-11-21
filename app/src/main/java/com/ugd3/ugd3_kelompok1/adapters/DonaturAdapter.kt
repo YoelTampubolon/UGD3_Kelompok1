@@ -1,11 +1,9 @@
-package com.ugd3.ugd3_kelompok1
+package com.ugd3.ugd3_kelompok1.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_donatur_adapter.view.*
 import android.content.Context
 import android.content.Intent
 import android.widget.*
@@ -13,6 +11,8 @@ import androidx.cardview.widget.CardView
 import com.ugd3.ugd3_kelompok1.R
 import com.ugd3.ugd3_kelompok1.models.Donatur
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.ugd3.ugd3_kelompok1.AddDonaturActivity
+import com.ugd3.ugd3_kelompok1.EditDonaturActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,7 +27,7 @@ class DonaturAdapter(private var donaturList: List<Donatur>, context: Context)
         this.context = context
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int): ViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.activity_donatur_adapter, parent, false)
         return ViewHolder(view)

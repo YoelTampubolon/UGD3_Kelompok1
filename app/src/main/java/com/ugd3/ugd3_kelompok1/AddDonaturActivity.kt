@@ -1,17 +1,14 @@
 package com.ugd3.ugd3_kelompok1
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -20,20 +17,13 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
-import com.ugd3.ugd3_kelompok1.Donasi.Constant
-import com.ugd3.ugd3_kelompok1.Donasi.DonaturDB
+import com.ugd3.ugd3_kelompok1.adapters.DonaturAdapter
 import com.ugd3.ugd3_kelompok1.api.DonaturApi
-import com.ugd3.ugd3_kelompok1.databinding.ActivityAddDonaturBinding
 import com.ugd3.ugd3_kelompok1.models.Donatur
 import kotlinx.android.synthetic.main.activity_add_donatur.*
 import kotlinx.android.synthetic.main.activity_edit_donatur.*
 import kotlinx.android.synthetic.main.fragment_donasi.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 

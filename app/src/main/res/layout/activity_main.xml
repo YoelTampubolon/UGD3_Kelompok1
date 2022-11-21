@@ -49,6 +49,7 @@
             android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailInputLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -78,6 +79,7 @@
             app:helperText="Masukkan password anda">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordInputLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
