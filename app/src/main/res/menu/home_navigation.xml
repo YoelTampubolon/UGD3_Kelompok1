@@ -10,6 +10,10 @@
         android:id="@+id/nav_donasi"
         android:icon="@drawable/ic_note"
         android:title="Donate" />
+    <item
+        android:id="@+id/nav_qr"
+        android:icon="@drawable/ic_qr_code"
+        android:title="ScanQr"/>
 
     <item
         android:id="@+id/nav_lokasi"

@@ -1,19 +1,25 @@
 package com.ugd3.ugd3_kelompok1
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.DocumentsContract
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.android.volley.AuthFailureError
@@ -22,6 +28,22 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.itextpdf.barcodes.BarcodeQRCode
+import com.itextpdf.io.image.ImageDataFactory
+import com.itextpdf.io.source.ByteArrayOutputStream
+import com.itextpdf.kernel.colors.ColorConstants
+import com.itextpdf.kernel.geom.PageSize
+import com.itextpdf.kernel.pdf.PdfDocument
+import com.itextpdf.layout.Document
+import com.itextpdf.kernel.pdf.PdfWriter
+import com.itextpdf.layout.element.Cell
+import com.itextpdf.layout.element.Image
+import com.itextpdf.layout.element.Paragraph
+import com.itextpdf.layout.element.Table
+import com.itextpdf.layout.property.HorizontalAlignment
+import com.itextpdf.layout.property.TextAlignment
+
+
 import com.ugd3.ugd3_kelompok1.Donasi.Constant
 import com.ugd3.ugd3_kelompok1.Donasi.DonaturDB
 import com.ugd3.ugd3_kelompok1.api.DonaturApi
@@ -32,7 +54,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
 import java.nio.charset.StandardCharsets
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class EditDonaturActivity : AppCompatActivity() {
 
@@ -65,7 +93,25 @@ class EditDonaturActivity : AppCompatActivity() {
         val btnSave = findViewById<Button>(R.id.btn_save)
         val id = intent.getIntExtra("id", -1)
         if(id == -1){
-            btnSave.setOnClickListener { createDonatur() }
+            btnSave.setOnClickListener {
+                val nama = binding!!.etNama.text.toString()
+                val nominal = binding!!.etNominal.text.toString()
+                val alamat = binding!!.etAlamat.text.toString()
+                try {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        if (nama.isEmpty() && nominal.isEmpty() && alamat.isEmpty()){
+                            Toast.makeText(applicationContext,"Semuanya Tidak boleh Kosong" , Toast.LENGTH_SHORT).show()
+                        }else {
+                            createDonatur()
+                            createPdf(nama, nominal, alamat)
+                        }
+
+                    }
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                }
+            }
+
         }else{
             getDonaturByid(id)
             btnSave.setOnClickListener { updateDonatur(id) }
@@ -76,6 +122,79 @@ class EditDonaturActivity : AppCompatActivity() {
 //        setupView()
 //        setupListener()
     }
+@SuppressLint("ObsoleteSdkInt")
+@RequiresApi(api = Build.VERSION_CODES.O)
+@Throws(
+    FileNotFoundException::class
+)
+private fun createPdf(nama: String, nominal: String, alamat: String) {
+    val pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString()
+    val file = File(pdfPath, "Donatur.pdf")
+    FileOutputStream(file)
+
+
+    val writer = PdfWriter(file)
+    val pdfDocument = PdfDocument(writer)
+    val document = Document(pdfDocument)
+    pdfDocument.defaultPageSize = PageSize.A4
+    document.setMargins(5f, 5f, 5f, 5f)
+    @SuppressLint("UseCompatLoadingForDrawables") val d = getDrawable(R.drawable.logo)
+
+
+    val bitmap = (d as BitmapDrawable?)!!.bitmap
+    val stream = ByteArrayOutputStream()
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+    val bitmapData = stream.toByteArray()
+    val imageData = ImageDataFactory.create(bitmapData)
+    val image = Image(imageData)
+    val namapengguna = Paragraph("Identitas Pengguna").setBold().setFontSize(24f)
+        .setTextAlignment(TextAlignment.CENTER)
+    val group = Paragraph(
+        """
+                        Berikut adalah
+                        Nama Donatur 
+                        """.trimIndent()).setTextAlignment(TextAlignment.CENTER).setFontSize(12f)
+
+
+    val width = floatArrayOf(100f, 100f)
+    val table = Table(width)
+
+    table.setHorizontalAlignment(HorizontalAlignment.CENTER)
+    table.addCell(Cell().add(Paragraph("Nama")))
+    table.addCell(Cell().add(Paragraph(nama)))
+    table.addCell(Cell().add(Paragraph("Nominal")))
+    table.addCell(Cell().add(Paragraph(nominal)))
+    table.addCell(Cell().add(Paragraph("Alamat")))
+    table.addCell(Cell().add(Paragraph(alamat)))
+    val dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    table.addCell(Cell().add(Paragraph("Tanggal Buat PDF")))
+    table.addCell(Cell().add(Paragraph(LocalDate.now().format(dateTimeFormatter))))
+    val timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss a")
+    table.addCell(Cell().add(Paragraph("Pukul Pembuatan")))
+    table.addCell(Cell().add(Paragraph(LocalTime.now().format(timeFormatter))))
+
+
+    val barcodeQRCode = BarcodeQRCode(
+        """
+                                        $nama
+                                        $nominal
+                                        $alamat
+                                        ${LocalDate.now().format(dateTimeFormatter)}
+                                        ${LocalTime.now().format(timeFormatter)}
+                                        """.trimIndent())
+    val qrCodeObject = barcodeQRCode.createFormXObject(ColorConstants.BLACK, pdfDocument)
+    val qrCodeImage = Image(qrCodeObject).setWidth(80f).setHorizontalAlignment(HorizontalAlignment.CENTER)
+
+    document.add(image)
+    document.add(namapengguna)
+    document.add(group)
+    document.add(table)
+    document.add(qrCodeImage)
+
+
+    document.close()
+    Toast.makeText(this, "Pdf Created", Toast.LENGTH_LONG).show()
+}
 
     private fun getDonaturByid(id: Int) {
         setLoading(true)
