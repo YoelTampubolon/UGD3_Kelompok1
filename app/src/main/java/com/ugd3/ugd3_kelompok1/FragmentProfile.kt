@@ -13,11 +13,14 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.models.Profile
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 import java.util.HashMap
@@ -46,6 +49,7 @@ class FragmentProfile : Fragment(){
         val btnEdit: Button = view.findViewById(R.id.editBtn)
 //        val imageDelete : ImageView = view.findViewById(R.id.icon_delete)
         val imageCamera : ImageView = view.findViewById(R.id.iconCamera)
+        val imagePerson : ImageView = view.findViewById(R.id.icon_person)
         queue = Volley.newRequestQueue(requireActivity())
 //        val db by lazy { UserDB(activity as HomeActivity) }
 //        val donateDao = db.donateDao()
@@ -74,6 +78,16 @@ class FragmentProfile : Fragment(){
 //            val moveDeleteImage = Intent(this@FragmentProfile.context, MainActivity::class.java)
 //            startActivity(moveDeleteImage)
 //        }
+
+        imagePerson.setOnClickListener{
+            val url ="https://placeimg.com/640/480/any"
+            Glide.with(this)
+                .load(url)
+                .fitCenter()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(icon_person)
+        }
 
         imageCamera.setOnClickListener{
             val moveCamera = Intent(this@FragmentProfile.context, CameraActivity::class.java)

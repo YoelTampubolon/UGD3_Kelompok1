@@ -67,7 +67,6 @@ class EditDonaturActivity : AppCompatActivity() {
 //    val db by lazy { DonaturDB(this) }
 //    private var noteId: Int = 0
 
-    private lateinit var binding: ActivityEditDonaturBinding
     private val CHANNEL_ID_1 = "channel_notification_01"
     private val notificationId1 = 101
     private var etName: EditText? = null
@@ -94,9 +93,9 @@ class EditDonaturActivity : AppCompatActivity() {
         val id = intent.getIntExtra("id", -1)
         if(id == -1){
             btnSave.setOnClickListener {
-                val nama = binding!!.etNama.text.toString()
-                val nominal = binding!!.etNominal.text.toString()
-                val alamat = binding!!.etAlamat.text.toString()
+                val nama = etName!!.text.toString()
+                val nominal = etNominal!!.text.toString()
+                val alamat = etAlamat!!.text.toString()
                 try {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         if (nama.isEmpty() && nominal.isEmpty() && alamat.isEmpty()){
@@ -129,7 +128,7 @@ class EditDonaturActivity : AppCompatActivity() {
 )
 private fun createPdf(nama: String, nominal: String, alamat: String) {
     val pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString()
-    val file = File(pdfPath, "Donatur.pdf")
+    val file = File(pdfPath, "File Donatur.pdf")
     FileOutputStream(file)
 
 
@@ -137,8 +136,8 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
     val pdfDocument = PdfDocument(writer)
     val document = Document(pdfDocument)
     pdfDocument.defaultPageSize = PageSize.A4
-    document.setMargins(5f, 5f, 5f, 5f)
-    @SuppressLint("UseCompatLoadingForDrawables") val d = getDrawable(R.drawable.logo)
+    document.setMargins(5f, 5f, 5f, 40f)
+    @SuppressLint("UseCompatLoadingForDrawables") val d = getDrawable(R.drawable.komunitas)
 
 
     val bitmap = (d as BitmapDrawable?)!!.bitmap
@@ -412,26 +411,26 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
 //        }
 //    }
 
-    private fun sendNotification1() {
-        val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
-            .setSmallIcon(R.drawable.ic_favorite)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setColor(Color.GREEN)
-            .setContentTitle("Daftar Donatur")
-            .setContentText("Ayo Mari Berdonasi")
-//            Big Text  + Inbox Style
-            .setStyle(
-                NotificationCompat.InboxStyle()
-                    .addLine("Nama " +binding.etNama.text.toString())
-                    .addLine("Nominal " + binding.etNominal.text.toString())
-                    .addLine( "Alamat " + binding.etAlamat.text.toString())
-                    .setBigContentTitle("Berhasil Tambah Data Donatur")
-                    .setSummaryText("Rangkuman Text")
-            )
-        with(NotificationManagerCompat.from(this)){
-            notify(notificationId1, builder.build())
-        }
-    }
+//    private fun sendNotification1() {
+//        val builder = NotificationCompat.Builder(this,CHANNEL_ID_1)
+//            .setSmallIcon(R.drawable.ic_favorite)
+//            .setPriority(NotificationCompat.PRIORITY_LOW)
+//            .setColor(Color.GREEN)
+//            .setContentTitle("Daftar Donatur")
+//            .setContentText("Ayo Mari Berdonasi")
+////            Big Text  + Inbox Style
+//            .setStyle(
+//                NotificationCompat.InboxStyle()
+//                    .addLine("Nama " +binding.etNama.text.toString())
+//                    .addLine("Nominal " + binding.etNominal.text.toString())
+//                    .addLine( "Alamat " + binding.etAlamat.text.toString())
+//                    .setBigContentTitle("Berhasil Tambah Data Donatur")
+//                    .setSummaryText("Rangkuman Text")
+//            )
+//        with(NotificationManagerCompat.from(this)){
+//            notify(notificationId1, builder.build())
+//        }
+//    }
 
 //    fun getNote() {
 //        noteId = intent.getIntExtra("intent_id", 0)
