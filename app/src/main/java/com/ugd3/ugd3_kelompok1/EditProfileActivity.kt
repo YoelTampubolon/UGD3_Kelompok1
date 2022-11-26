@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
+import com.shashank.sony.fancytoastlib.FancyToast
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.databinding.ActivityEditDonaturBinding
@@ -135,7 +136,7 @@ class EditProfileActivity : AppCompatActivity() {
                     inputNomorTelepon!!.setText(profile.nomorTelepon)
                     inputTanggalLahir!!.setText(profile.tanggalLahir)
 
-                    Toast.makeText(this@EditProfileActivity,"Data berhasil diambil", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this,"Data berhasil diambil", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
 //                    setLoading(false)
                 },
                 Response.ErrorListener{ error ->
@@ -143,13 +144,13 @@ class EditProfileActivity : AppCompatActivity() {
                     try{
                         val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                         val errors = JSONObject(responseBody)
-                        Toast.makeText(
+                        FancyToast.makeText(
                             this,
                             errors.getString("message"),
-                            Toast.LENGTH_SHORT
+                            FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                         ).show()
                     } catch (e: Exception){
-                        Toast.makeText(this@EditProfileActivity, e.message, Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                     }
                 }) {
             @Throws(AuthFailureError::class)
@@ -181,7 +182,7 @@ class EditProfileActivity : AppCompatActivity() {
                     sharedPreferences.edit()
                         .putString("nama", profile.namaLengkap)
                         .apply()
-                    Toast.makeText(this@EditProfileActivity, "Data berhasil diubah", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, "Data berhasil diubah", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
                 }
 
 
@@ -195,13 +196,13 @@ class EditProfileActivity : AppCompatActivity() {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
+                    FancyToast.makeText(
                         this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 } catch (e: Exception){
-                    Toast.makeText(this@EditProfileActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }){
                 @Throws(AuthFailureError::class)

@@ -42,6 +42,7 @@ import com.itextpdf.layout.element.Paragraph
 import com.itextpdf.layout.element.Table
 import com.itextpdf.layout.property.HorizontalAlignment
 import com.itextpdf.layout.property.TextAlignment
+import com.shashank.sony.fancytoastlib.FancyToast
 
 
 import com.ugd3.ugd3_kelompok1.Donasi.Constant
@@ -99,7 +100,7 @@ class EditDonaturActivity : AppCompatActivity() {
                 try {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         if (nama.isEmpty() && nominal.isEmpty() && alamat.isEmpty()){
-                            Toast.makeText(applicationContext,"Semuanya Tidak boleh Kosong" , Toast.LENGTH_SHORT).show()
+                            FancyToast.makeText(applicationContext,"Semuanya Tidak boleh Kosong" , FancyToast.LENGTH_SHORT,  FancyToast.INFO, false).show()
                         }else {
                             createDonatur()
                             createPdf(nama, nominal, alamat)
@@ -192,7 +193,7 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
 
 
     document.close()
-    Toast.makeText(this, "Pdf Created", Toast.LENGTH_LONG).show()
+    FancyToast.makeText(this, "Pdf Created", FancyToast.LENGTH_LONG,  FancyToast.DEFAULT, false).show()
 }
 
     private fun getDonaturByid(id: Int) {
@@ -209,20 +210,20 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 etNominal!!.setText(donatur.getString("nominal"))
                 etAlamat!!.setText(donatur.getString("alamat"))
 
-                Toast.makeText(this@EditDonaturActivity, "Data berhasil diambil!", Toast.LENGTH_SHORT).show()
+                FancyToast.makeText(this, "Data berhasil diambil!", FancyToast.LENGTH_SHORT,  FancyToast.SUCCESS, false).show()
                 setLoading(false)
             }, Response.ErrorListener { error ->
                 setLoading(false)
                 try {
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
-                        this@EditDonaturActivity,
+                    FancyToast.makeText(
+                        this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 }catch (e: Exception) {
-                    Toast.makeText(this@EditDonaturActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }) {
             @Throws(AuthFailureError::class)
@@ -251,7 +252,7 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 val donatur = gson.fromJson(response, Donatur::class.java)
 
                 if(donatur!=null)
-                    Toast.makeText(this@EditDonaturActivity, "Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, "Data Berhasil Ditambahkan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
 
                 val returnIntent = Intent()
                 setResult(RESULT_OK, returnIntent)
@@ -263,13 +264,13 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
-                        this@EditDonaturActivity,
+                    FancyToast.makeText(
+                        this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 }catch (e:Exception){
-                    Toast.makeText(this@EditDonaturActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }) {
                 @Throws(AuthFailureError::class)
@@ -312,7 +313,7 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 val donatur = gson.fromJson(response, Donatur::class.java)
 
                 if(donatur!=null)
-                    Toast.makeText(this@EditDonaturActivity, "Data Berhasil Diupdate", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, "Data Berhasil Diupdate", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
 
                 val returnIntent = Intent()
                 setResult(RESULT_OK, returnIntent)
@@ -324,13 +325,13 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
-                        this@EditDonaturActivity,
+                    FancyToast.makeText(
+                        this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 }catch (e:Exception){
-                    Toast.makeText(this@EditDonaturActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this@EditDonaturActivity, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }) {
                 @Throws(AuthFailureError::class)

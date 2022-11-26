@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
+import com.shashank.sony.fancytoastlib.FancyToast
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.models.Profile
@@ -121,19 +122,19 @@ class FragmentProfile : Fragment(){
                     noHp!!.setText(profile.nomorTelepon)
                     tglLahir!!.setText(profile.tanggalLahir)
 
-                    Toast.makeText(requireActivity(),"Data berhasil diambil", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(requireActivity(),"Data berhasil diambil", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
                 },
                 Response.ErrorListener{ error ->
                     try{
                         val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                         val errors = JSONObject(responseBody)
-                        Toast.makeText(
+                        FancyToast.makeText(
                             requireActivity(),
                             errors.getString("message"),
-                            Toast.LENGTH_SHORT
+                            FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                         ).show()
                     } catch (e: Exception){
-                        Toast.makeText(requireActivity(), e.message, Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(requireActivity(), e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                     }
                 }) {
             @Throws(AuthFailureError::class)

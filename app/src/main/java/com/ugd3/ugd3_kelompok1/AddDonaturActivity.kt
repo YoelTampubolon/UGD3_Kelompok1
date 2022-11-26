@@ -18,6 +18,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.shashank.sony.fancytoastlib.FancyToast
 import com.ugd3.ugd3_kelompok1.adapters.DonaturAdapter
 import com.ugd3.ugd3_kelompok1.api.DonaturApi
 import com.ugd3.ugd3_kelompok1.models.Donatur
@@ -110,7 +111,7 @@ class AddDonaturActivity : AppCompatActivity() {
                 if(!donatur.isEmpty())
  //                 Toast.makeText(this@AddDonaturActivity, "Data berhasil diambil", Toast.LENGTH_SHORT).show()
                 else
-                    Toast.makeText(this@AddDonaturActivity, "Data Kosong!", Toast.LENGTH_SHORT)
+                    FancyToast.makeText(this, "Data Kosong!", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
 
             }, Response.ErrorListener{ error ->
                 srDonatur!!.isRefreshing = true
@@ -118,13 +119,13 @@ class AddDonaturActivity : AppCompatActivity() {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
-                        this@AddDonaturActivity,
+                    FancyToast.makeText(
+                        this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 }catch(e: Exception){
-                    Toast.makeText(this@AddDonaturActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }) {
             @Throws(AuthFailureError::class)
@@ -149,7 +150,7 @@ class AddDonaturActivity : AppCompatActivity() {
 
 
                 if(donatur != null)
-                    Toast.makeText(this@AddDonaturActivity, "Data berhasil dihapus", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, "Data berhasil dihapus", FancyToast.LENGTH_SHORT,  FancyToast.SUCCESS, false).show()
                 allDonatur()
             }, Response.ErrorListener{ error ->
                 setLoading(false)
@@ -157,13 +158,13 @@ class AddDonaturActivity : AppCompatActivity() {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
-                        this@AddDonaturActivity,
+                    FancyToast.makeText(
+                        this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT,  FancyToast.INFO, false
                     ).show()
                 }catch(e: Exception){
-                    Toast.makeText(this@AddDonaturActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT,  FancyToast.ERROR, false).show()
                 }
             }) {
             @Throws(AuthFailureError::class)

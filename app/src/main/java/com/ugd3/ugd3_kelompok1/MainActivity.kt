@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
+import com.shashank.sony.fancytoastlib.FancyToast
 import com.ugd3.ugd3_kelompok1.Donasi.UserDB
 import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.databinding.ActivityMainBinding
@@ -119,13 +120,13 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     if(checkLogin==true){
-                        Toast.makeText(this@MainActivity, "Data ditemukan", Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(this, "Data ditemukan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
                         sendNotification1()
                         val move = Intent(this@MainActivity, HomeActivity::class.java)
                         move.putExtra("nama", etNama)
                         startActivity(move)
                     }else{
-                        Toast.makeText(this@MainActivity, "Data tidak ditemukan!", Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(this, "Data tidak ditemukan!", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
                     }
                 }, Response.ErrorListener { error ->
 //                    srMahasiswa!!.isRefreshing = false
@@ -133,9 +134,9 @@ class MainActivity : AppCompatActivity() {
                         val responseBody =
                             String(error.networkResponse.data, StandardCharsets.UTF_8)
                         val errors = JSONObject(responseBody)
-                        Toast.makeText(this@MainActivity, errors.getString("message"), Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(this, errors.getString("message"), FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
                     } catch (e: Exception){
-                        Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                        FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                     }
                 }) {
                 @Throws(AuthFailureError::class)

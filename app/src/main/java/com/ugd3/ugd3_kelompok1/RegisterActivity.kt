@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import com.shashank.sony.fancytoastlib.FancyToast
 import com.ugd3.ugd3_kelompok1.api.ProfileApi
 import com.ugd3.ugd3_kelompok1.databinding.ActivityRegisterBinding
 import com.ugd3.ugd3_kelompok1.models.Profile
@@ -196,8 +197,8 @@ class RegisterActivity : AppCompatActivity() {
 
             setPositiveButton("Yes") { _, _ ->
                 super.onBackPressed()
-                Toast.makeText(this@RegisterActivity, "Terima Kasih",
-                    Toast.LENGTH_LONG).show()
+                FancyToast.makeText(this@RegisterActivity, "Terima Kasih",
+                    FancyToast.LENGTH_LONG, FancyToast.DEFAULT, false).show()
             }
 
             setNegativeButton("No"){_, _ ->
@@ -225,7 +226,7 @@ class RegisterActivity : AppCompatActivity() {
                 var profile = gson.fromJson(json.toString(), Profile::class.java)
 
                 if(profile != null)
-                    Toast.makeText(this@RegisterActivity, "Data berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, "Data berhasil ditambahkan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
 //                println(profile[0].namaLengkap)
 
                 val returnIntent = Intent()
@@ -238,13 +239,13 @@ class RegisterActivity : AppCompatActivity() {
                 try{
                     val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
                     val errors = JSONObject(responseBody)
-                    Toast.makeText(
+                    FancyToast.makeText(
                         this,
                         errors.getString("message"),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
                     ).show()
                 } catch (e: Exception){
-                    Toast.makeText(this@RegisterActivity, e.message, Toast.LENGTH_SHORT).show()
+                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                 }
             }){
                 @Throws(AuthFailureError::class)

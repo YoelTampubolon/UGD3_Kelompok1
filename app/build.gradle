@@ -95,5 +95,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+
+    //implementasi Fancy Toast Library
+    implementation 'io.github.shashank02051997:FancyToast:2.0.2'
 }
 

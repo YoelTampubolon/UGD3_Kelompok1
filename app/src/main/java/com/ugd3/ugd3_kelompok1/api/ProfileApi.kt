@@ -2,7 +2,7 @@ package com.ugd3.ugd3_kelompok1.api
 
 class ProfileApi {
     companion object {
-        val BASE_URL = "http://192.168.0.104/UGD_Kelompok1/public/api/"
+        val BASE_URL = "http://192.168.100.60/UGD_Kelompok1/public/api/"
 
         val GET_ALL_URL = BASE_URL + "profileUser"
         val GET_BY_ID_URL = BASE_URL + "profileUser/"
