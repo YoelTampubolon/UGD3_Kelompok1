@@ -58,30 +58,6 @@ class HomeActivity : AppCompatActivity() {
 //        bottomNavigationView = findViewById(R.id.nav_view)
     }
 
-//    private fun navListener() {
-//        bottomNavigationView.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
-//            override fun onTabSelected(
-//                lastIndex: Int,
-//                lastTab: AnimatedBottomBar.Tab?,
-//                newIndex: Int,
-//                newTab: AnimatedBottomBar.Tab
-//            ) {
-//                when(newIndex) {
-//                    0 -> setThatFragments(FragmentHome())
-//                    1 -> setThatFragments(FragmentDonasi())
-//                    2 -> setThatFragments(FragmentQR())
-//                    3 -> setThatFragments(FragmentLocation())
-//                    4 -> setThatFragments(FragmentProfile())
-//                    else -> setThatFragments(FragmentHome())
-//                }
-//                Log.d("bottom_bar", "Selected index: $newIndex, title: ${newTab.title}")
-//            }
-//
-//            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-//                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
-//            }
-//        })
-//    }
 
     private fun setThatFragments(fragment : Fragment){
             supportFragmentManager.beginTransaction().apply {
