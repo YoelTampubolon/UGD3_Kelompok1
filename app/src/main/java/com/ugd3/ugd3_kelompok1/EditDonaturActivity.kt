@@ -239,121 +239,166 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
     private fun createDonatur(){
         setLoading(true)
 
-        val donatur = Donatur(0,
-            etName!!.text.toString(),
-            etNominal!!.text.toString(),
-            etAlamat!!.text.toString(),
 
-        )
+        if(etName!!.text.toString().isEmpty()) {
+            Toast.makeText(this@EditDonaturActivity, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(etNominal!!.text.toString().isEmpty()) {
+            Toast.makeText(this@EditDonaturActivity, "Nominal tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(etAlamat!!.text.toString().isEmpty()) {
+            Toast.makeText(this@EditDonaturActivity, "Alamat tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            val donatur = Donatur(
+                0,
+                etName!!.text.toString(),
+                etNominal!!.text.toString(),
+                etAlamat!!.text.toString(),
 
-        val stringRequest: StringRequest =
-            object: StringRequest(Method.POST, DonaturApi.ADD_URL, Response.Listener {response->
-                val gson = Gson()
-                val donatur = gson.fromJson(response, Donatur::class.java)
+                )
 
-                if(donatur!=null)
-                    FancyToast.makeText(this, "Data Berhasil Ditambahkan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
+            val stringRequest: StringRequest =
+                object :
+                    StringRequest(Method.POST, DonaturApi.ADD_URL, Response.Listener { response ->
+                        val gson = Gson()
+                        val donatur = gson.fromJson(response, Donatur::class.java)
 
-                val returnIntent = Intent()
-                setResult(RESULT_OK, returnIntent)
-                finish()
+                        if (donatur != null)
+                            FancyToast.makeText(
+                                this,
+                                "Data Berhasil Ditambahkan",
+                                FancyToast.LENGTH_SHORT,
+                                FancyToast.SUCCESS,
+                                false
+                            ).show()
 
-                setLoading(false)
-            }, Response.ErrorListener { error->
-                setLoading(false)
-                try{
-                    val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
-                    val errors = JSONObject(responseBody)
-                    FancyToast.makeText(
-                        this,
-                        errors.getString("message"),
-                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
-                    ).show()
-                }catch (e:Exception){
-                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
+                        val returnIntent = Intent()
+                        setResult(RESULT_OK, returnIntent)
+                        finish()
+
+                        setLoading(false)
+                    }, Response.ErrorListener { error ->
+                        setLoading(false)
+                        try {
+                            val responseBody =
+                                String(error.networkResponse.data, StandardCharsets.UTF_8)
+                            val errors = JSONObject(responseBody)
+                            FancyToast.makeText(
+                                this,
+                                errors.getString("message"),
+                                FancyToast.LENGTH_SHORT, FancyToast.INFO, false
+                            ).show()
+                        } catch (e: Exception) {
+                            FancyToast.makeText(
+                                this,
+                                e.message,
+                                FancyToast.LENGTH_SHORT,
+                                FancyToast.ERROR,
+                                false
+                            ).show()
+                        }
+                    }) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Accept"] = "application/json"
+                        return headers
+
+                    }
+
+                    @Throws(AuthFailureError::class)
+                    override fun getBody(): ByteArray {
+                        val gson = Gson()
+                        val requestBody = gson.toJson(donatur)
+                        return requestBody.toByteArray(StandardCharsets.UTF_8)
+                    }
+
+                    override fun getBodyContentType(): String {
+                        return "application/json"
+                    }
                 }
-            }) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): MutableMap<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Accept"] = "application/json"
-                    return headers
-
-                }
-
-                @Throws(AuthFailureError::class)
-                override fun getBody(): ByteArray {
-                    val gson = Gson()
-                    val requestBody = gson.toJson(donatur)
-                    return requestBody.toByteArray(StandardCharsets.UTF_8)
-                }
-
-                override fun getBodyContentType(): String {
-                    return "application/json"
-                }
-            }
-        // Menambahkan request ke request queue
-        queue!!.add(stringRequest)
+            // Menambahkan request ke request queue
+            queue!!.add(stringRequest)
+        }
+        setLoading(false)
     }
 
     private fun updateDonatur(id: Int){
         setLoading(true)
 
-        val donatur = Donatur(
-            id,
-            etName!!.text.toString(),
-            etNominal!!.text.toString(),
-            etAlamat!!.text.toString(),
-        )
+            val donatur = Donatur(
+                id,
+                etName!!.text.toString(),
+                etNominal!!.text.toString(),
+                etAlamat!!.text.toString(),
+            )
 
 
-        val stringRequest: StringRequest =
-            object: StringRequest(Method.PUT, DonaturApi.UPDATE_URL + id, Response.Listener {response->
-                val gson = Gson()
-                val donatur = gson.fromJson(response, Donatur::class.java)
+            val stringRequest: StringRequest =
+                object : StringRequest(
+                    Method.PUT,
+                    DonaturApi.UPDATE_URL + id,
+                    Response.Listener { response ->
+                        val gson = Gson()
+                        val donatur = gson.fromJson(response, Donatur::class.java)
 
-                if(donatur!=null)
-                    FancyToast.makeText(this, "Data Berhasil Diupdate", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
+                        if (donatur != null)
+                            FancyToast.makeText(
+                                this,
+                                "Data Berhasil Diupdate",
+                                FancyToast.LENGTH_SHORT,
+                                FancyToast.SUCCESS,
+                                false
+                            ).show()
 
-                val returnIntent = Intent()
-                setResult(RESULT_OK, returnIntent)
-                finish()
+                        val returnIntent = Intent()
+                        setResult(RESULT_OK, returnIntent)
+                        finish()
 
-                setLoading(false)
-            }, Response.ErrorListener { error->
-                setLoading(false)
-                try{
-                    val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
-                    val errors = JSONObject(responseBody)
-                    FancyToast.makeText(
-                        this,
-                        errors.getString("message"),
-                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
-                    ).show()
-                }catch (e:Exception){
-                    FancyToast.makeText(this@EditDonaturActivity, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
+                        setLoading(false)
+                    },
+                    Response.ErrorListener { error ->
+                        setLoading(false)
+                        try {
+                            val responseBody =
+                                String(error.networkResponse.data, StandardCharsets.UTF_8)
+                            val errors = JSONObject(responseBody)
+                            FancyToast.makeText(
+                                this,
+                                errors.getString("message"),
+                                FancyToast.LENGTH_SHORT, FancyToast.INFO, false
+                            ).show()
+                        } catch (e: Exception) {
+                            FancyToast.makeText(
+                                this@EditDonaturActivity,
+                                e.message,
+                                FancyToast.LENGTH_SHORT,
+                                FancyToast.ERROR,
+                                false
+                            ).show()
+                        }
+                    }) {
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): MutableMap<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Accept"] = "application/json"
+                        return headers
+                    }
+
+                    @Throws(AuthFailureError::class)
+                    override fun getBody(): ByteArray {
+                        val gson = Gson()
+                        val requestBody = gson.toJson(donatur)
+                        return requestBody.toByteArray(StandardCharsets.UTF_8)
+                    }
+
+                    override fun getBodyContentType(): String {
+                        return "application/json"
+                    }
                 }
-            }) {
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): MutableMap<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Accept"] = "application/json"
-                    return headers
-                }
-
-                @Throws(AuthFailureError::class)
-                override fun getBody(): ByteArray {
-                    val gson = Gson()
-                    val requestBody = gson.toJson(donatur)
-                    return requestBody.toByteArray(StandardCharsets.UTF_8)
-                }
-
-                override fun getBodyContentType(): String {
-                    return "application/json"
-                }
-            }
-        // Menambahkan request ke request queue
-        queue!!.add(stringRequest)
+            // Menambahkan request ke request queue
+            queue!!.add(stringRequest)
     }
 
     private fun createNotificationChannel() {

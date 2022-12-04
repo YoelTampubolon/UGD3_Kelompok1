@@ -54,9 +54,7 @@ class HomeActivity : AppCompatActivity() {
             true
         }
     }
-    private fun init() {
-//        bottomNavigationView = findViewById(R.id.nav_view)
-    }
+
 
 //    private fun navListener() {
 //        bottomNavigationView.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
