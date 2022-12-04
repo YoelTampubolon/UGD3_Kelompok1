@@ -78,63 +78,82 @@ class MainActivity : AppCompatActivity() {
 
             etEmail = binding.inputLayoutEmailLogin.editText?.text.toString()
             etPassword = binding.inputLayoutPasswordLogin.editText?.text.toString()
-            var checkLogin = false
+//            var checkLogin = false
             binding.inputLayoutEmailLogin.setError(null)
             binding.inputLayoutPasswordLogin.setError(null)
             val email: String = binding.inputLayoutEmailLogin.getEditText()?.getText().toString()
             val password: String = binding.inputLayoutPasswordLogin.getEditText()?.getText().toString()
 
             val stringRequest : StringRequest = object:
-                StringRequest(Method.GET, ProfileApi.GET_ALL_URL, Response.Listener { response ->
+                StringRequest(Method.POST, ProfileApi.LOGIN_URL, Response.Listener { response ->
                     val gson = Gson()
                     val jsonObject = JSONObject(response)
-                    val jsonArray = jsonObject.getJSONArray("data")
-                    var profile : Array<Profile> = gson.fromJson(jsonArray.toString(), Array<Profile>::class.java)
+                    val jsonArray = jsonObject.getJSONObject("user")
+                    var profile = gson.fromJson(jsonArray.toString(), Profile::class.java)
 
-                    if(email.isEmpty() || password.isEmpty()) {
-                        if(email.isEmpty()) {
-                            binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
-                            checkLogin = false
-                        }else {
-                            binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
-                            checkLogin = false
-                        }
 
-                    }
+//
+//                    if(email.isEmpty() || password.isEmpty()) {
+//                        if(email.isEmpty()) {
+//                            binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
+//                            checkLogin = false
+//                        }else {
+//                            binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
+//                            checkLogin = false
+//                        }
+//
+//                    }
+//
+//                    if(email.isEmpty() && password.isEmpty()) {
+//                        binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
+//                        binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
+//                        checkLogin = false
+//                    }
+//
+//                    for (temp in profile){
+//                        if (temp.email == etEmail && temp.password == etPassword){
+                    sharedPreferences.edit()
+                        .putInt("id", profile.id!!)
+                        .putString("nama", profile.namaLengkap)
+                        .apply()
+//
+//                            checkLogin=true
+//                        }
+//                    }
 
-                    if(email.isEmpty() && password.isEmpty()) {
-                        binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
-                        binding.inputLayoutPasswordLogin.setError("Password tidak boleh kosong")
-                        checkLogin = false
-                    }
-
-                    for (temp in profile){
-                        if (temp.email == etEmail && temp.password == etPassword){
-                            sharedPreferences.edit()
-                                .putInt("id", temp.id!!)
-                                .putString("nama", temp.namaLengkap)
-                                .apply()
-
-                            checkLogin=true
-                        }
-                    }
-
-                    if(checkLogin==true){
-                        FancyToast.makeText(this, "Data ditemukan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
-                        sendNotification1()
-                        val move = Intent(this@MainActivity, HomeActivity::class.java)
-                        move.putExtra("nama", etNama)
-                        startActivity(move)
-                    }else{
-                        FancyToast.makeText(this, "Data tidak ditemukan!", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
-                    }
+//                    if(checkLogin==true){
+                    FancyToast.makeText(this, "Data ditemukan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
+                    sendNotification1()
+                    val move = Intent(this@MainActivity, HomeActivity::class.java)
+                    move.putExtra("nama", etNama)
+                    startActivity(move)
+//                    }else{
+//                        FancyToast.makeText(this, "Data tidak ditemukan!", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
+//                    }
                 }, Response.ErrorListener { error ->
 //                    srMahasiswa!!.isRefreshing = false
                     try {
                         val responseBody =
                             String(error.networkResponse.data, StandardCharsets.UTF_8)
-                        val errors = JSONObject(responseBody)
-                        FancyToast.makeText(this, errors.getString("message"), FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
+                        if (error.networkResponse.statusCode == 401) {
+                            binding.inputLayoutEmailLogin.setError("Email salah!")
+                            binding.inputLayoutPasswordLogin.setError("Password salah!")
+                        }else if (error.networkResponse.statusCode == 400) {
+                            val jsonObject = JSONObject(responseBody)
+                            val jsonObject1 = jsonObject.getJSONObject("message")
+                            for (i in jsonObject1.keys()) {
+                                if (i == "email") {
+                                    binding.inputLayoutEmailLogin.error = jsonObject1.getJSONArray(i).getString(0)
+                                }
+                                if (i == "password") {
+                                    binding.inputLayoutPasswordLogin.error = jsonObject1.getJSONArray(i).getString(0)
+                                }
+                            }
+                        }else {
+                            val errors = JSONObject(responseBody)
+                            FancyToast.makeText(this, errors.getString("message"), FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show()
+                        }
+
                     } catch (e: Exception){
                         FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
                     }
@@ -144,6 +163,13 @@ class MainActivity : AppCompatActivity() {
                     val headers = HashMap<String, String>()
                     headers["Accept"] = "application/json"
                     return headers
+                }
+
+                override fun getParams(): Map<String, String> {
+                    val params = HashMap<String, String>()
+                    params["email"] = binding.emailInputLogin.text.toString()
+                    params["password"] = binding.passwordInputLogin.text.toString()
+                    return params
                 }
 
             }
