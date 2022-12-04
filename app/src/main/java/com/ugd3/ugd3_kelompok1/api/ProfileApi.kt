@@ -9,5 +9,6 @@ class ProfileApi {
         val ADD_URL = BASE_URL + "profileUser"
         val UPDATE_URL = BASE_URL + "profileUser/"
         val DELETE_URL = BASE_URL + "profileUser/"
+        val LOGIN_URL = BASE_URL + "profileUser/"
     }
 }
