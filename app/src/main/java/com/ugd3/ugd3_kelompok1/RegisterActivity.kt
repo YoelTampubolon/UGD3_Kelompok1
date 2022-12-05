@@ -210,75 +210,94 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createProfile(){
-//        setLoading(true)
-        val profile = Profile(
-            NamaLengkap,
-            email,
-            password,
-            tanggalLahir,
-            NoTelpon,
-        )
-        val stringRequest: StringRequest =
-            object: StringRequest(Method.POST, ProfileApi.ADD_URL, Response.Listener { response ->
-                val gson = Gson()
-                val jsonObject = JSONObject(response)
-                val json = jsonObject.getJSONObject("data")
-                var profile = gson.fromJson(json.toString(), Profile::class.java)
+        setLoading(true)
+        if(NamaLengkap!!.toString().isEmpty()){
+            Toast.makeText(this@RegisterActivity, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(password!!.toString().isEmpty()){
+            Toast.makeText(this@RegisterActivity, "Password Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(email!!.toString().isEmpty()){
+            Toast.makeText(this@RegisterActivity, "Email Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(tanggalLahir!!.toString().isEmpty()){
+            Toast.makeText(this@RegisterActivity, "Tanggal Lahir Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else if(NoTelpon!!.toString().isEmpty()){
+            Toast.makeText(this@RegisterActivity, "Nomor Telpon Tidak Boleh Kosong!", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            val profile = Profile(
+                NamaLengkap,
+                email,
+                password,
+                tanggalLahir,
+                NoTelpon,
+            )
 
-                if(profile != null)
-                    FancyToast.makeText(this, "Data berhasil ditambahkan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
+            val stringRequest: StringRequest =
+                object: StringRequest(Method.POST, ProfileApi.ADD_URL, Response.Listener { response ->
+                    val gson = Gson()
+                    val jsonObject = JSONObject(response)
+                    val json = jsonObject.getJSONObject("data")
+                    var profile = gson.fromJson(json.toString(), Profile::class.java)
+
+                    if(profile != null)
+                        FancyToast.makeText(this, "Data berhasil ditambahkan", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
 //                println(profile[0].namaLengkap)
 
-                val returnIntent = Intent()
-                setResult(RESULT_OK, returnIntent)
-                finish()
+                    val returnIntent = Intent()
+                    setResult(RESULT_OK, returnIntent)
+                    finish()
 
 //                setLoading(false)
-            }, Response.ErrorListener { error ->
-//                setLoading(false)
-                try{
-                    val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
-                    val errors = JSONObject(responseBody)
-                    FancyToast.makeText(
-                        this,
-                        errors.getString("message"),
-                        FancyToast.LENGTH_SHORT, FancyToast.INFO, false
-                    ).show()
-                } catch (e: Exception){
-                    FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
-                }
-            }){
-                @Throws(AuthFailureError::class)
-                override fun getHeaders(): Map<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Accept"] = "application/json"
-                    return headers
+                }, Response.ErrorListener { error ->
+
+                    try{
+                        val responseBody = String(error.networkResponse.data, StandardCharsets.UTF_8)
+                        val errors = JSONObject(responseBody)
+                        FancyToast.makeText(
+                            this,
+                            errors.getString("message"),
+                            FancyToast.LENGTH_SHORT, FancyToast.INFO, false
+                        ).show()
+                    } catch (e: Exception){
+                        FancyToast.makeText(this, e.message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
+                    }
+                }){
+                    @Throws(AuthFailureError::class)
+                    override fun getHeaders(): Map<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Accept"] = "application/json"
+                        return headers
+                    }
+
+                    @Throws(AuthFailureError::class)
+                    override fun getBody(): ByteArray {
+                        val gson = Gson()
+                        val requestBody = gson.toJson(profile)
+                        return requestBody.toByteArray(StandardCharsets.UTF_8)
+                    }
+
+                    override fun getBodyContentType(): String {
+                        return "application/json"
+                    }
                 }
 
-                @Throws(AuthFailureError::class)
-                override fun getBody(): ByteArray {
-                    val gson = Gson()
-                    val requestBody = gson.toJson(profile)
-                    return requestBody.toByteArray(StandardCharsets.UTF_8)
-                }
-
-                override fun getBodyContentType(): String {
-                    return "application/json"
-                }
-            }
-
-        queue!!.add(stringRequest)
+            queue!!.add(stringRequest)
+        }
+        setLoading(false)
     }
-//    private fun setLoading(isLoading: Boolean){
-//        if(isLoading){
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-//            )
-//            layoutLoading!!.visibility = View.INVISIBLE
-//        }else{
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//            layoutLoading!!.visibility = View.INVISIBLE
-//        }
-//    }
+   private fun setLoading(isLoading: Boolean){
+      if(isLoading){
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            )
+            layoutLoading!!.visibility = View.INVISIBLE
+        }else{
+           window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+            layoutLoading!!.visibility = View.INVISIBLE
+      }
+  }
 }
