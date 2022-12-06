@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
@@ -55,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
 //        val db by lazy { UserDB(this) }
 //        val donateDao = db.donateDao()
         queue = Volley.newRequestQueue(this)
-
+        layoutLoading = findViewById(R.id.layout_loading)
         val cal = Calendar.getInstance()
         val myYear = cal.get(Calendar.YEAR)
         val myMonth = cal.get(Calendar.MONTH)
@@ -80,32 +81,68 @@ class RegisterActivity : AppCompatActivity() {
             mBundle.putString("Tanggallahir", binding.inputLayoutTanggalLahir.editText?.text.toString())
             mBundle.putString("NoHandphone", binding.inputLayoutNomorTelepon.editText?.text.toString())
 
-            if(NamaLengkap.isEmpty()){
-                binding.inputLayoutNama.setError("Nama Wajib Diisi")
+            if(NamaLengkap.isEmpty() && password.length!=8 && email.isEmpty() && tanggalLahir.isEmpty() && NoTelpon.isEmpty()){
+                Toast.makeText(this@RegisterActivity, "Semua Inputan Kosong", Toast.LENGTH_SHORT).show()
+                error = true
+            }else if(NamaLengkap.isEmpty()){
+//                binding.inputLayoutNama.setError("Nama Wajib Diisi")
+                Toast.makeText(this@RegisterActivity, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+                error = true
+            } else if(email.isEmpty() && !email.isValidEmail()){
+//                binding.inputLayoutEmail.setError("Email Wajib Diisi dan memiliki format @gmail.com")
+                Toast.makeText(this@RegisterActivity, "Email Wajib diisi dan memiliki format @gmail.com", Toast.LENGTH_SHORT).show()
+                error = true
+            } else if(password.length!=8) {
+//                binding.inputLayoutPassword.setError("Password Wajib 8 Karakter")
+                Toast.makeText(
+                    this@RegisterActivity,
+                    "Password Wajib 8 Karakter",
+                    Toast.LENGTH_SHORT
+                ).show()
+                error = true
+            }else if(tanggalLahir.isEmpty()){
+//                binding.inputLayoutTanggalLahir.setError("Tanggal Lahir Wajib Diisi")
+                Toast.makeText(this@RegisterActivity, "Tanggal Lahir Wajib Diisi", Toast.LENGTH_SHORT).show()
                 error = true
             }
-            if(password.length!=8){
-                binding.inputLayoutPassword.setError("Password Wajib 8 Karakter")
+            else if(NoTelpon.isEmpty()){
+//                binding.inputLayoutNomorTelepon.setError("No Telp Wajib Diisi")
+                Toast.makeText(this@RegisterActivity, "Nomor Telepon Wajib Diisi", Toast.LENGTH_SHORT).show()
                 error = true
             }
-            if(email.isEmpty()){
-                binding.inputLayoutEmail.setError("Email Wajib Diisi")
-                error = true
-            }
-            if(tanggalLahir.isEmpty()){
-                binding.inputLayoutTanggalLahir.setError("Tanggal Lahir Wajib Diisi")
-                error = true
-            }
-            if(NoTelpon.isEmpty()){
-                binding.inputLayoutNomorTelepon.setError("No Telp Wajib Diisi")
-                error = true
-            }
-            if(NamaLengkap.isNotEmpty() && password.length==8 && email.isNotEmpty() && tanggalLahir.isNotEmpty() && NoTelpon.isNotEmpty()) {
+            else if(NamaLengkap.isNotEmpty() && password.length==8 && email.isNotEmpty() && tanggalLahir.isNotEmpty() && NoTelpon.isNotEmpty()) {
                 error = false
                 createProfile()
                 Snackbar.make(binding.activityRegister, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
             }
             if(error)return@OnClickListener
+
+//            if(NamaLengkap.isEmpty()){
+//                binding.inputLayoutNama.setError("Nama Wajib Diisi")
+//                error = true
+//            }
+//            if(email.isEmpty() || email.isValidEmail()){
+//                binding.inputLayoutEmail.setError("Email Wajib Diisi dan memiliki format @gmail.com")
+//                error = true
+//            }
+//            if(password.length!=8){
+//                binding.inputLayoutPassword.setError("Password Wajib 8 Karakter")
+//                error = true
+//            }
+//            if(tanggalLahir.isEmpty()){
+//                binding.inputLayoutTanggalLahir.setError("Tanggal Lahir Wajib Diisi")
+//                error = true
+//            }
+//            if(NoTelpon.isEmpty()){
+//                binding.inputLayoutNomorTelepon.setError("No Telp Wajib Diisi")
+//                error = true
+//            }
+//            if(NamaLengkap.isNotEmpty() && password.length==8 && email.isNotEmpty() && tanggalLahir.isNotEmpty() && NoTelpon.isNotEmpty()) {
+//                error = false
+//                createProfile()
+//                Snackbar.make(binding.activityRegister, "Daftar Berhasil", Snackbar.LENGTH_LONG).show()
+//            }
+//            if(error)return@OnClickListener
 
 //            val users = donateDao.getDonates()
 //            println(users)
@@ -300,4 +337,6 @@ class RegisterActivity : AppCompatActivity() {
             layoutLoading!!.visibility = View.INVISIBLE
       }
   }
+
+    fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }

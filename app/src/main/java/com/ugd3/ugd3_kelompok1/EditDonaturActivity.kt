@@ -255,7 +255,6 @@ private fun createPdf(nama: String, nominal: String, alamat: String) {
                 etName!!.text.toString(),
                 etNominal!!.text.toString(),
                 etAlamat!!.text.toString(),
-
                 )
 
             val stringRequest: StringRequest =
