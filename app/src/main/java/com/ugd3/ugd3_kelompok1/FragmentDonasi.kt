@@ -28,10 +28,15 @@ class FragmentDonasi : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val btnDonatur: Button = view.findViewById(R.id.button1)
+        val btnPenyelenggara: Button = view.findViewById(R.id.button2)
 
         btnDonatur.setOnClickListener(View.OnClickListener {
             val moveDonatur = Intent(this@FragmentDonasi.context, AddDonaturActivity::class.java)
             startActivity(moveDonatur)
+        })
+        btnPenyelenggara.setOnClickListener(View.OnClickListener {
+            val movePenyelenggara = Intent(this@FragmentDonasi.context, AddPenyelenggaraActivity::class.java)
+            startActivity(movePenyelenggara)
         })
     }
 }
