@@ -29,6 +29,7 @@ class FragmentDonasi : Fragment() {
 
         val btnDonatur: Button = view.findViewById(R.id.button1)
         val btnPenyelenggara: Button = view.findViewById(R.id.button2)
+        val btnSponsor: Button = view.findViewById(R.id.button3)
 
         btnDonatur.setOnClickListener(View.OnClickListener {
             val moveDonatur = Intent(this@FragmentDonasi.context, AddDonaturActivity::class.java)
@@ -37,6 +38,10 @@ class FragmentDonasi : Fragment() {
         btnPenyelenggara.setOnClickListener(View.OnClickListener {
             val movePenyelenggara = Intent(this@FragmentDonasi.context, AddPenyelenggaraActivity::class.java)
             startActivity(movePenyelenggara)
+        })
+        btnSponsor.setOnClickListener(View.OnClickListener {
+            val moveSponsor = Intent(this@FragmentDonasi.context, AddSponsorActivity::class.java)
+            startActivity(moveSponsor)
         })
     }
 }

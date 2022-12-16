@@ -1,5 +1,4 @@
 package com.ugd3.ugd3_kelompok1
-
 import android.app.*
 import android.content.Context
 import android.content.Intent
@@ -58,8 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
 
-
-
         if(intent.getBundleExtra("register")!=null){
             mBundle = intent.getBundleExtra("register")
             tempEmail = mBundle!!.getString("email")!!
@@ -92,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                     var profile = gson.fromJson(jsonArray.toString(), Profile::class.java)
 
 
-//
+
 //                    if(email.isEmpty() || password.isEmpty()) {
 //                        if(email.isEmpty()) {
 //                            binding.inputLayoutEmailLogin.setError("Email tidak boleh kosong")
@@ -288,5 +285,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
